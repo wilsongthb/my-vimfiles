@@ -10,6 +10,9 @@ set runtimepath^=~/.vim/bufexplorer-7.4.21
 set runtimepath^=~/.vim/vim-l9
 set runtimepath^=~/.vim/vim-fuzzyfinder
 
+set runtimepath^=~/.vim/vim-scripts@vim-auto-save
+let g:auto_save=1
+
 set runtimepath^=~/.vim/xolox@vim-misc
 set runtimepath^=~/.vim/xolox@vim-session
 let g:session_autosave='yes'
@@ -23,4 +26,8 @@ set sessionoptions-=buffers
 
 "set runtimepath^=~./vim/vim-auto-save
 "let g:auto_save = 1  " enable AutoSave on Vim startup
+
+" hola amigos
+" como estan
+" ahora yo voy a escribir algo aqui
 

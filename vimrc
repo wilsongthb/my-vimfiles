@@ -4,11 +4,10 @@ set shiftwidth=2
 set softtabstop=2
 set nowrap
 
-set runtimepath^=~/.vim/vim-autocomplete
-set runtimepath^=~/.vim/bufexplorer-7.4.21
-
-set runtimepath^=~/.vim/vim-l9
-set runtimepath^=~/.vim/vim-fuzzyfinder
+set runtimepath^=~/.vim/_plugins/bufexplorer-7.4.21
+set runtimepath^=~/.vim/_plugins/vim-autocomplete
+set runtimepath^=~/.vim/_plugins/vim-l9
+set runtimepath^=~/.vim/_plugins/vim-fuzzyfinder " depende de vim-l9
 
 set runtimepath^=~/.vim/vim-scripts/vim-auto-save
 let g:auto_save=1

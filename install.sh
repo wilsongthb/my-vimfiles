@@ -5,7 +5,7 @@ git clone https://github.com/vim-scripts/vim-auto-save.git ~/.vim/vim-scripts/vi
 
 # XOLOX MISC AND SESSION
 git clone https://github.com/xolox/vim-misc.git ~/.vim/xolox/vim-misc
-git clone https://github.com/xolox/vim-session.git ~/.vim/xolox/cim-session
+git clone https://github.com/xolox/vim-session.git ~/.vim/xolox/vim-session
 vim -u NONE -c "helptags ~/.vim/xolox/vim-session/doc" -c q
 
 # NERD TREE

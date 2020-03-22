@@ -1,4 +1,5 @@
 session.vim
+*.vim
 xolox/
 vim-scripts/
 pack/

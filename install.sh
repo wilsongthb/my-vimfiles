@@ -15,12 +15,16 @@ vim -u NONE -c "helptags ~/.vim/pack/vendor/start/nerdtree/doc" -c q
 # VUE HIGHLIGHTS
 git clone https://github.com/posva/vim-vue.git ~/.vim/pack/plugins/start/vim-vue
 
-# BUFFER EXPLORER
-vim -u NONE -c "helptags ~/.vim/bufexplorer-7.4.21/doc" -c q
-
 # VIM - AIRLINE
 git clone https://github.com/vim-airline/vim-airline ~/.vim/pack/dist/start/vim-airline
-vim -u NONE -c "helptags ~/.vim/pack/dist/start/vim-airline" -c q
+vim -u NONE -c "helptags ~/.vim/pack/dist/start/vim-airline/doc" -c q
+
+# LIGHTLINE
+# git clone https://github.com/itchyny/lightline.vim ~/.vim/pack/plugins/start/lightline
+
+# MULTICURSOR
+git clone https://github.com/terryma/vim-multiple-cursors.git ~/.vim/terryma/vim-multiple-cursors
+vim -u NONE -c "helptags ~/.vim/terryma/vim-multiple-cursors/doc" -c q
 
 echo 'End installation'
 #END INSTALL

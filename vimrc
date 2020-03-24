@@ -45,11 +45,12 @@ set nowrap
 
 nmap <F2> :bp<CR>
 nmap <F3> :bn<CR>
+nmap <F4> :NERDTreeToggle<CR>
 
 command -nargs=1 SearchFile :Unite -no-split -ignorecase -input=**/<args> file
 
 " ## FROM _PLUGINS  ##
-set runtimepath^=~/.vim/_plugins/vim-autocomplpop
+" set runtimepath^=~/.vim/_plugins/vim-autocomplpop
 set runtimepath^=~/.vim/_plugins/vim-l9
 set runtimepath^=~/.vim/_plugins/vim-fuzzyfinder " depende de vim-l9
 let g:fuf_coveragefile_exclude = '\v\~$|\.(o|exe|dll|bak|orig|swp)$|(^|[/\\])\.(hg|git|bzr)($|[/\\])|(^|[/\\])(vendor|node_modules)'
@@ -89,6 +90,9 @@ call plug#begin(s:bundle_dir)
   Plug 'pangloss/vim-javascript'
   Plug 'Shougo/unite.vim'
   Plug 'ctrlpvim/ctrlp.vim'
+  Plug 'othree/es.next.syntax.vim'
+  Plug 'othree/javascript-libraries-syntax.vim'
+  Plug 'prettier/vim-prettier'
 call plug#end()
 
 set wildignore+=*/node_modules/*,*/vendor/*

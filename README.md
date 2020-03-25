@@ -4,5 +4,5 @@ las carpetas y archivos de _plugins son plugins que no estan en un repositorio, 
 Requiere CURL instalado en linea de comandos
 
 ```bash
-chmod +x ./plug.sh && vim -u NONE -c 'PlugInstall' -c q
+chmod +x ./plug.sh && ./plug.sh && vim -c 'PlugInstall' -c q
 ```

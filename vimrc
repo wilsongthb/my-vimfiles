@@ -85,7 +85,6 @@ let s:is_win = has('win32')
 let $v = $HOME.(s:is_win ? '\vimfiles' : '/.vim')
 let s:bundle_dir = $v.'/bundle'
 call plug#begin(s:bundle_dir)
-  Plug 'troydm/asyncfinder.vim'
   Plug 'vim-scripts/vim-auto-save'
   Plug 'xolox/vim-misc'
   Plug 'xolox/vim-session'

@@ -50,7 +50,7 @@ nmap <F4> :NERDTreeToggle<CR>
 command -nargs=1 SearchFile :Unite -no-split -ignorecase -input=**/<args> file
 
 " ## FROM _PLUGINS  ##
-" set runtimepath^=~/.vim/_plugins/vim-autocomplpop
+set runtimepath^=~/.vim/_plugins/vim-autocomplpop
 set runtimepath^=~/.vim/_plugins/vim-l9
 set runtimepath^=~/.vim/_plugins/vim-fuzzyfinder " depende de vim-l9
 let g:fuf_coveragefile_exclude = '\v\~$|\.(o|exe|dll|bak|orig|swp)$|(^|[/\\])\.(hg|git|bzr)($|[/\\])|(^|[/\\])(vendor|node_modules)'
@@ -85,6 +85,14 @@ let s:is_win = has('win32')
 let $v = $HOME.(s:is_win ? '\vimfiles' : '/.vim')
 let s:bundle_dir = $v.'/bundle'
 call plug#begin(s:bundle_dir)
+  Plug 'troydm/asyncfinder.vim'
+  Plug 'vim-scripts/vim-auto-save'
+  Plug 'xolox/vim-misc'
+  Plug 'xolox/vim-session'
+  Plug 'preservim/nerdtree'
+  Plug 'posva/vim-vue'
+  Plug 'vim-airline/vim-airline'
+  Plug 'terryma/vim-multiple-cursors'
   Plug 'mattn/emmet-vim'
   Plug 'StanAngeloff/php.vim'
   Plug 'pangloss/vim-javascript'

@@ -11,3 +11,5 @@ function! coc#source#email#complete(opt, cb) abort
   let items = ['foo@gmail.com', 'bar@yahoo.com']
   call a:cb(items)
 endfunction
+
+

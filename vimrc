@@ -44,21 +44,30 @@ set number
 set nowrap
 set wildmenu
 
-" KEY MAPS
-nmap <F1> :bp<CR>
-nmap <F2> :bn<CR>
-nmap <F4> :NERDTreeToggle<CR>
-nmap <F5> :Prettier<CR>
-nmap <C-\> :vsplit<CR>
-noremap <Leader>y "*y
-noremap <Leader>p "*p
-noremap <Leader>Y "+y
-noremap <Leader>P "+p
+function! UsFormatCode()
+  if expand('%:e') == 'vue'
+    execute "Prettier"
+  else
+    execute "Format"
+  endif
+endfunction
 
 function! CopyToClipboard()
   call system('xclip -sel c', @0)
   echo 'copied to clipboard!'
 endfunction
+
+" KEY MAPS
+nmap <F1> :bp<CR>
+nmap <F2> :bn<CR>
+nmap <F3> :Bclose<CR>
+nmap <F4> :NERDTreeToggle<CR>
+nmap <F5> :call UsFormatCode()<CR>
+nmap <C-\> :vsplit<CR>
+noremap <Leader>y "*y
+noremap <Leader>p "*p
+noremap <Leader>Y "+y
+noremap <Leader>P "+p
 
 command -nargs=1 SearchFile :Unite -no-split -ignorecase -input=**/<args> file
 command CopyClipboard call CopyToClipboard()

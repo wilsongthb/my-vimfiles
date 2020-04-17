@@ -2,3 +2,4 @@ session.vim
 bundle/
 bundle/*
 bundle/**
+bundle

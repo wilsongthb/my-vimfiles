@@ -4,5 +4,7 @@ las carpetas y archivos de _plugins son plugins que no estan en un repositorio, 
 Requiere CURL instalado en linea de comandos
 
 ```bash
-chmod +x ./plug.sh && ./plug.sh && vim -c 'PlugInstall' -c q
+git clone https://github.com/wilsongthb/my-vimfiles.git .vim
+vim -c 'PlugInstall' -c q
+vim -c 'CocInstall coc-html coc-phpls coc-tsserver coc-css coc-emmet' -c q
 ```

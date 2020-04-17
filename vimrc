@@ -34,6 +34,7 @@ set report      =0         " Always report changed lines.
 set synmaxcol   =200       " Only highlight the first 200 columns.
 
 set list                   " Show non-printable characters.
+
 if has('multi_byte') && &encoding ==# 'utf-8'
   let &listchars = 'tab:▸ ,extends:❯,precedes:❮,nbsp:±'
 else
@@ -105,12 +106,14 @@ call plug#end()
 
 " AUTOSAVE
 let g:auto_save=1
+let g:auto_save_in_insert_mode = 0  " do not save while in insert mode
 
 " SESSION
 let g:session_autosave='yes'
 let g:session_autoload='yes'
 let g:session_directory='./'
-let g:session_default_name='session'
+let g:session_default_name='.session'
+let g:session_default_overwrite='yes'
 "set sessionoptions-=options
 
 " AIRLINE

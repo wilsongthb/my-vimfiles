@@ -64,6 +64,7 @@ nmap <F2> :bn<CR>
 nmap <F3> :Bclose<CR>
 nmap <F4> :NERDTreeToggle<CR>
 nmap <F5> :call UsFormatCode()<CR>
+nmap <F6> :CocCommand explorer<CR>
 nmap <C-\> :vsplit<CR>
 noremap <Leader>y "*y
 noremap <Leader>p "*p

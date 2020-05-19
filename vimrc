@@ -66,22 +66,21 @@ nmap <F2> :bn<CR>
 nmap <F3> :Bclose<CR>
 nmap <F4> :NERDTreeToggle<CR>
 nmap <F5> :call UsFormatCode()<CR>
-nmap <F6> :CocCommand explorer<CR>
+nmap <F6> :NERDTreeToggleFind<CR>
 nmap <C-\> :vsplit<CR>
 noremap <Leader>y "*y
 noremap <Leader>p "*p
 noremap <Leader>Y "+y
 noremap <Leader>P "+p
 
-command -nargs=1 SearchFile :Unite -no-split -ignorecase -input=**/<args> file
 command CopyClipboard call CopyToClipboard()
 
 " ## FROM _PLUGINS  ##
 set runtimepath^=~/.vim/_plugins/bclose
 "set runtimepath^=~/.vim/_plugins/vim-autocomplpop
-set runtimepath^=~/.vim/_plugins/vim-l9
-set runtimepath^=~/.vim/_plugins/vim-fuzzyfinder " depende de vim-l9
-let g:fuf_coveragefile_exclude = '\v\~$|\.(o|exe|dll|bak|orig|swp)$|(^|[/\\])\.(hg|git|bzr)($|[/\\])|(^|[/\\])(vendor|node_modules)'
+"set runtimepath^=~/.vim/_plugins/vim-l9
+"set runtimepath^=~/.vim/_plugins/vim-fuzzyfinder " depende de vim-l9
+"let g:fuf_coveragefile_exclude = '\v\~$|\.(o|exe|dll|bak|orig|swp)$|(^|[/\\])\.(hg|git|bzr)($|[/\\])|(^|[/\\])(vendor|node_modules)'
 
 " ## ############## ##
 " PLUG INSTALL
@@ -133,11 +132,6 @@ set wildignore+=*/node_modules/*,*/vendor/*
 " COC CONFIG
 " ==========================================================
 " mis paquetes
-"
-" coc-phpls
-" coc-vetur
-" coc-css
-" coc-html
 "
 
 " TextEdit might fail if hidden is not set.

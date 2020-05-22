@@ -113,8 +113,12 @@ call plug#begin(s:bundle_dir)
   Plug 'othree/es.next.syntax.vim'
   Plug 'othree/javascript-libraries-syntax.vim'
   Plug 'prettier/vim-prettier'
-  Plug 'neoclide/coc.nvim', {'branch': 'release'},
+  Plug 'neoclide/coc.nvim', {'branch': 'release'}
   Plug 'ton/vim-bufsurf'
+  Plug 'preservim/nerdcommenter'
+  "Plug 'airblade/vim-gitgutter'
+  Plug 'adelarsq/vim-matchit'
+  Plug 'jiangmiao/auto-pairs'
 call plug#end()
 
 " AUTOSAVE

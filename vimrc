@@ -60,19 +60,29 @@ function! CopyToClipboard()
   echo 'copied to clipboard!'
 endfunction
 
+function! GoToVSplitView()
+  let currentBuffer = buffer_number()
+  execute 'BufSurfBack'
+  execute 'vert sb ' . currentBuffer
+endfunction
+
 " KEY MAPS
 nmap <F1> :bp<CR>
 nmap <F2> :bn<CR>
 nmap <F3> :Bclose<CR>
 nmap <F4> :NERDTreeToggle<CR>
 nmap <F5> :call UsFormatCode()<CR>
-nmap <F6> :NERDTreeToggleFind<CR>
-nmap <C-\> :vsplit<CR>
+nmap <F6> :NERDTreeFind<CR>
+nmap <F7> :split<CR>
+nmap <C-\> :call GoToVSplitView()<CR>
+nmap <silent> <A-left> :BufSurfBack<CR>
+nmap <silent> <A-right> :BufSurfForward<CR>
 noremap <Leader>y "*y
 noremap <Leader>p "*p
 noremap <Leader>Y "+y
 noremap <Leader>P "+p
 
+" COPY CLIPBOARDS
 command CopyClipboard call CopyToClipboard()
 
 " ## FROM _PLUGINS  ##
@@ -103,7 +113,8 @@ call plug#begin(s:bundle_dir)
   Plug 'othree/es.next.syntax.vim'
   Plug 'othree/javascript-libraries-syntax.vim'
   Plug 'prettier/vim-prettier'
-  Plug 'neoclide/coc.nvim', {'branch': 'release'}
+  Plug 'neoclide/coc.nvim', {'branch': 'release'},
+  Plug 'ton/vim-bufsurf'
 call plug#end()
 
 " AUTOSAVE

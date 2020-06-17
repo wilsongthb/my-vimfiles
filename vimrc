@@ -1,3 +1,17 @@
+" INDICE
+" ======================
+" ConfiguracionBasica
+" MisOpciones
+" MisFunciones
+" Keymaps
+" Comandos
+" PlugConfig
+
+" ConfiguracionBasica - https://github.com/mhinz/vim-galore/blob/master/static/minimal-vimrc.vim
+"
+" A (not so) minimal vimrc.
+"
+
 " You want Vim, not vi. When Vim finds a vimrc, 'nocompatible' is set anyway.
 " We set it explicitely to make our position clear!
 set nocompatible
@@ -7,8 +21,8 @@ syntax on                  " Enable syntax highlighting.
 
 set autoindent             " Indent according to previous line.
 set expandtab              " Use spaces instead of tabs.
-set softtabstop =2         " Tab key indents by 2 spaces.
-set shiftwidth  =2         " >> indents by 2 spaces.
+set softtabstop =2         " Tab key indents by 4 spaces.
+set shiftwidth  =2         " >> indents by 4 spaces.
 set shiftround             " >> indents to next multiple of 'shiftwidth'.
 
 set backspace   =indent,eol,start  " Make backspace work as you would expect.
@@ -34,17 +48,18 @@ set report      =0         " Always report changed lines.
 set synmaxcol   =200       " Only highlight the first 200 columns.
 
 set list                   " Show non-printable characters.
-
 if has('multi_byte') && &encoding ==# 'utf-8'
   let &listchars = 'tab:▸ ,extends:❯,precedes:❮,nbsp:±'
 else
   let &listchars = 'tab:> ,extends:>,precedes:<,nbsp:.'
 endif
 
-set number
+" MisOpciones
+"set number
 set nowrap
 set wildmenu
 
+" MisFunciones
 function! UsFormatCode()
   if expand('%:e') == 'vue'
     execute "Prettier"
@@ -66,14 +81,19 @@ function! GoToVSplitView()
   execute 'vert sb ' . currentBuffer
 endfunction
 
-" KEY MAPS
+" Keymaps
 nmap <F1> :bp<CR>
 nmap <F2> :bn<CR>
 nmap <F3> :Bclose<CR>
 nmap <F4> :NERDTreeToggle<CR>
 nmap <F5> :call UsFormatCode()<CR>
 nmap <F6> :NERDTreeFind<CR>
-nmap <F7> :split<CR>
+nmap <F7> :vsplit<CR>
+nmap <F8> :split<CR>
+nmap <F9> :close<CR>
+nmap <F10> :close<CR>
+"<F11> FullScreenToggle
+nmap <F12> <Plug>(coc-definition)
 nmap <C-\> :call GoToVSplitView()<CR>
 nmap <silent> <A-left> :BufSurfBack<CR>
 nmap <silent> <A-right> :BufSurfForward<CR>
@@ -82,18 +102,17 @@ noremap <Leader>p "*p
 noremap <Leader>Y "+y
 noremap <Leader>P "+p
 
-" COPY CLIPBOARDS
+" Comandos
 command CopyClipboard call CopyToClipboard()
 
-" ## FROM _PLUGINS  ##
+" RuntimePath
 set runtimepath^=~/.vim/_plugins/bclose
 "set runtimepath^=~/.vim/_plugins/vim-autocomplpop
 "set runtimepath^=~/.vim/_plugins/vim-l9
 "set runtimepath^=~/.vim/_plugins/vim-fuzzyfinder " depende de vim-l9
 "let g:fuf_coveragefile_exclude = '\v\~$|\.(o|exe|dll|bak|orig|swp)$|(^|[/\\])\.(hg|git|bzr)($|[/\\])|(^|[/\\])(vendor|node_modules)'
 
-" ## ############## ##
-" PLUG INSTALL
+" PlugConfig
 let s:is_win = has('win32')
 let $v = $HOME.(s:is_win ? '\vimfiles' : '/.vim')
 let s:bundle_dir = $v.'/bundle'
@@ -119,36 +138,49 @@ call plug#begin(s:bundle_dir)
   "Plug 'airblade/vim-gitgutter'
   Plug 'adelarsq/vim-matchit'
   Plug 'jiangmiao/auto-pairs'
+  "Plug 'tomasr/molokai'
+  "Plug 'whatyouhide/vim-gotham'
+  "Plug 'chriskempson/base16-vim'
+  "Plug 'morhetz/gruvbox'
+  "Plug 'mhinz/vim-janah'
+  "Plug 'jpo/vim-railscasts-theme'
+  Plug 'kabbamine/yowish.vim'
+  "Plug 'junegunn/fzf.vim' "para buscar en todos los archivos"
 call plug#end()
 
-" AUTOSAVE
+" ThemeConfig
+colorscheme yowish
+
+" Autosave
 let g:auto_save=1
 let g:auto_save_in_insert_mode = 0  " do not save while in insert mode
 
-" SESSION
+" Session
 let g:session_autosave='yes'
 let g:session_autoload='yes'
 let g:session_directory='./'
 let g:session_default_name='.session'
 let g:session_default_overwrite='yes'
-"set sessionoptions-=options
+set sessionoptions-=options
 
-" AIRLINE
+" Airline
 let g:airline#extensions#tabline#enabled = 1
+let g:airline_powerline_fonts = 1
 
-" FOR COLOR PROBLEMS
+" Compatibilidad
 if !has('gui_running')
   set t_Co=256
 endif
 
+" Wildignore
 set wildignore+=*/node_modules/*,*/vendor/*
 
-" ==========================================================
-" COC CONFIG
-" ==========================================================
-" mis paquetes
-"
+" CtrlPConfig
+let g:ctrlp_show_hidden = 1
 
+" ==========================================================
+" CocConfig
+" ==========================================================
 " TextEdit might fail if hidden is not set.
 set hidden
 

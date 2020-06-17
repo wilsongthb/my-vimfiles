@@ -5,6 +5,7 @@ Requiere CURL instalado en linea de comandos
 Requiere yarn
 Requiere node
 Requiere python3
+Require wget
 
 ```bash
 git clone https://github.com/wilsongthb/my-vimfiles.git ~/.vim
@@ -20,4 +21,11 @@ CocInstall -sync coc-eslint
 CocInstall -sync coc-emmet
 CocInstall -sync coc-css
 
+```
+
+powerline fonts
+```bash
+wget https://github.com/powerline/powerline/raw/develop/font/PowerlineSymbols.otf
+mv PowerlineSymbols.otf ~/.local/share/fonts/
+fc-cache -vf ~/.local/share/fonts/
 ```

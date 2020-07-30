@@ -6,6 +6,8 @@
 " Keymaps
 " Comandos
 " PlugConfig
+" JavaHighlightsPerform
+" ThemeConfig
 
 " ConfiguracionBasica - https://github.com/mhinz/vim-galore/blob/master/static/minimal-vimrc.vim
 "
@@ -104,6 +106,7 @@ noremap <Leader>P "+p
 
 " Comandos
 command CopyClipboard call CopyToClipboard()
+command! BufOnly execute '%bdelete|edit #|normal `"'
 
 " RuntimePath
 set runtimepath^=~/.vim/_plugins/bclose
@@ -138,22 +141,44 @@ call plug#begin(s:bundle_dir)
   "Plug 'airblade/vim-gitgutter'
   Plug 'adelarsq/vim-matchit'
   Plug 'jiangmiao/auto-pairs'
-  "Plug 'tomasr/molokai'
-  "Plug 'whatyouhide/vim-gotham'
-  "Plug 'chriskempson/base16-vim'
-  "Plug 'morhetz/gruvbox'
-  "Plug 'mhinz/vim-janah'
-  "Plug 'jpo/vim-railscasts-theme'
-  Plug 'kabbamine/yowish.vim'
   "Plug 'junegunn/fzf.vim' "para buscar en todos los archivos"
+
+  " Temas de color
+  Plug 'tomasr/molokai'
+  Plug 'whatyouhide/vim-gotham'
+  "Plug 'chriskempson/base16-vim'
+  Plug 'morhetz/gruvbox'
+  Plug 'mhinz/vim-janah'
+  Plug 'jpo/vim-railscasts-theme'
+  Plug 'kabbamine/yowish.vim'
+  Plug 'gosukiwi/vim-atom-dark'
+  Plug 'joshdick/onedark.vim'
+  Plug 'NLKNguyen/papercolor-theme'
+  Plug 'nanotech/jellybeans.vim'
+  Plug 'rakr/vim-one'
+
+  " Entorno de Javascript -- https://thoughtbot.com/blog/modern-typescript-and-react-development-in-vim
+  Plug 'pangloss/vim-javascript'
+  Plug 'leafgarland/typescript-vim'
+  Plug 'MaxMEllon/vim-jsx-pretty'
+  "Plug 'peitalin/vim-jsx-typescript'
+  "Plug 'styled-components/vim-styled-components', { 'branch': 'main' }
+  "Plug 'jparise/vim-graphql'
+
 call plug#end()
 
+" JavaHighlightsPerform
+autocmd BufEnter *.{js,jsx,ts,tsx} :syntax sync fromstart
+autocmd BufLeave *.{js,jsx,ts,tsx} :syntax sync clear
+
 " ThemeConfig
-colorscheme yowish
+colorscheme onedark
+"set background=dark
 
 " Autosave
 let g:auto_save=1
 let g:auto_save_in_insert_mode = 0  " do not save while in insert mode
+let g:auto_save_no_updatetime = 1
 
 " Session
 let g:session_autosave='yes'
@@ -165,12 +190,15 @@ set sessionoptions-=options
 
 " Airline
 let g:airline#extensions#tabline#enabled = 1
-let g:airline_powerline_fonts = 1
+let g:airline_powerline_fonts = 0
 
 " Compatibilidad
 if !has('gui_running')
   set t_Co=256
 endif
+
+"-- EMMET CONFIG --
+let g:user_emmet_leader_key=','
 
 " Wildignore
 set wildignore+=*/node_modules/*,*/vendor/*
@@ -181,6 +209,19 @@ let g:ctrlp_show_hidden = 1
 " ==========================================================
 " CocConfig
 " ==========================================================
+let g:coc_global_extensions = [
+  \ 'coc-tsserver',
+  \ 'coc-snippets',
+  \ 'coc-eslint',
+  \ 'coc-emmet',
+  \ 'coc-vetur',
+  \ 'coc-tsserver',
+  \ 'coc-phpls',
+  \ 'coc-json',
+  \ 'coc-html',
+  \ 'coc-css'
+  \ ]
+
 " TextEdit might fail if hidden is not set.
 set hidden
 

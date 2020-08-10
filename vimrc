@@ -126,6 +126,7 @@ call plug#begin(s:bundle_dir)
   Plug 'preservim/nerdtree'
   Plug 'posva/vim-vue'
   Plug 'vim-airline/vim-airline'
+  Plug 'vim-airline/vim-airline-themes'
   Plug 'terryma/vim-multiple-cursors'
   Plug 'mattn/emmet-vim'
   Plug 'StanAngeloff/php.vim'
@@ -172,7 +173,8 @@ autocmd BufEnter *.{js,jsx,ts,tsx} :syntax sync fromstart
 autocmd BufLeave *.{js,jsx,ts,tsx} :syntax sync clear
 
 " ThemeConfig
-colorscheme onedark
+colorscheme PaperColor
+set background=dark
 "set background=dark
 
 " Autosave
@@ -191,6 +193,7 @@ set sessionoptions-=options
 " Airline
 let g:airline#extensions#tabline#enabled = 1
 let g:airline_powerline_fonts = 0
+let g:airline_theme='angr'
 
 " Compatibilidad
 if !has('gui_running')

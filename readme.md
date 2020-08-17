@@ -9,7 +9,8 @@ Require wget
 
 ```bash
 git clone https://github.com/wilsongthb/my-vimfiles.git ~/.vim
-vim -c 'PlugInstall' -c q
+vim -c 'PlugInstall'
+mkdir -p ~/.config/coc && ln -s ~/.vim/coc_ultisnips/ ~/.config/coc/ultisnips
 ```
 
 powerline fonts

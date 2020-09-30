@@ -93,7 +93,7 @@ nmap <F6> :NERDTreeFind<CR>
 nmap <F7> :vsplit<CR>
 nmap <F8> :split<CR>
 nmap <F9> :close<CR>
-nmap <F10> :close<CR>
+"nmap <F10> :close<CR>
 "<F11> FullScreenToggle
 nmap <F12> <Plug>(coc-definition)
 nmap <C-\> :call GoToVSplitView()<CR>
@@ -105,8 +105,9 @@ noremap <Leader>Y "+y
 noremap <Leader>P "+p
 
 " Comandos
-command CopyClipboard call CopyToClipboard()
-command! BufOnly execute '%bdelete|edit #|normal `"'
+command CopyToClipboard call CopyToClipboard()
+command! CloseAllInBuffer execute '%bdelete|edit #|normal `"'
+command! ExecuteCurrentLineInBash execute '.w !bash'
 
 " RuntimePath
 set runtimepath^=~/.vim/_plugins/bclose
@@ -145,12 +146,12 @@ call plug#begin(s:bundle_dir)
   "Plug 'junegunn/fzf.vim' "para buscar en todos los archivos"
 
   " Temas de color
-  Plug 'tomasr/molokai'
-  Plug 'whatyouhide/vim-gotham'
+  "Plug 'tomasr/molokai'
+  "Plug 'whatyouhide/vim-gotham'
   "Plug 'chriskempson/base16-vim'
-  Plug 'morhetz/gruvbox'
-  Plug 'mhinz/vim-janah'
-  Plug 'jpo/vim-railscasts-theme'
+  "Plug 'morhetz/gruvbox'
+  "Plug 'mhinz/vim-janah'
+  "Plug 'jpo/vim-railscasts-theme'
   Plug 'kabbamine/yowish.vim'
   Plug 'gosukiwi/vim-atom-dark'
   Plug 'joshdick/onedark.vim'
@@ -200,14 +201,19 @@ if !has('gui_running')
   set t_Co=256
 endif
 
+" nerdcommenter config
+let g:NERDSpaceDelims = 1
+let g:NERDDefaultAlign = 'left'
+
 "-- EMMET CONFIG --
 let g:user_emmet_leader_key=','
 
 " Wildignore
-set wildignore+=*/node_modules/*,*/vendor/*
+"set wildignore+=*/vendor/*,*/node_modules/*
 
 " CtrlPConfig
 let g:ctrlp_show_hidden = 1
+let g:ctrlp_custom_ignore = '\v[\/](vendor|node_modules)$'
 
 " ==========================================================
 " CocConfig
@@ -222,7 +228,9 @@ let g:coc_global_extensions = [
   \ 'coc-phpls',
   \ 'coc-json',
   \ 'coc-html',
-  \ 'coc-css'
+  \ 'coc-css',
+  \ 'coc-sh',
+  \ 'coc-sql'
   \ ]
 
 " TextEdit might fail if hidden is not set.

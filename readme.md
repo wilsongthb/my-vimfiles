@@ -16,13 +16,13 @@ git clone git@github.com:wilsongthb/my-vimfiles.git ~/.vim
 ```bash
 git clone https://github.com/wilsongthb/my-vimfiles.git ~/.vim
 ```
-
+### After
 ```bash
 vim -c 'PlugInstall'
 mkdir -p ~/.config/coc && ln -s ~/.vim/coc_ultisnips/ ~/.config/coc/ultisnips
 ```
 
-powerline fonts
+### powerline fonts
 ```bash
 wget https://github.com/powerline/powerline/raw/develop/font/PowerlineSymbols.otf
 mv PowerlineSymbols.otf ~/.local/share/fonts/

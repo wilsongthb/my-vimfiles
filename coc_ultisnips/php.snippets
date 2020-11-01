@@ -28,6 +28,10 @@ snippet authid "User id from auth" b
 auth()->user()->id
 endsnippet
 
+snippet userid "User id shortcut" b
+auth()->id()$1
+endsnippet
+
 snippet beginTrans "Begin database transaction" b
 try {
   DB::beginTransaction();

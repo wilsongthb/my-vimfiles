@@ -63,10 +63,13 @@ set wildmenu
 
 " MisFunciones
 function! UsFormatCode()
-  if expand('%:e') == 'vue'
+  let file_type = expand('%:e')
+  if file_type == 'vue'
     execute "Prettier"
-  elseif expand('%:e') == 'js'
+  elseif file_type == 'js'
     execute "Prettier"
+  " elseif file_type == 'html'
+  "   execute "Prettier"
   else
     execute "Format"
   endif
@@ -93,7 +96,7 @@ nmap <F6> :NERDTreeFind<CR>
 nmap <F7> :vsplit<CR>
 nmap <F8> :split<CR>
 nmap <F9> :close<CR>
-"nmap <F10> :close<CR>
+nmap <F10> :w!<CR>
 "<F11> FullScreenToggle
 nmap <F12> <Plug>(coc-definition)
 nmap <C-\> :call GoToVSplitView()<CR>
@@ -140,24 +143,33 @@ call plug#begin(s:bundle_dir)
   Plug 'neoclide/coc.nvim', {'branch': 'release'}
   Plug 'ton/vim-bufsurf'
   Plug 'preservim/nerdcommenter'
-  "Plug 'airblade/vim-gitgutter'
   Plug 'adelarsq/vim-matchit'
   Plug 'jiangmiao/auto-pairs'
   "Plug 'junegunn/fzf.vim' "para buscar en todos los archivos"
+  "Plug 'airblade/vim-gitgutter'
 
   " Temas de color
   "Plug 'tomasr/molokai'
-  "Plug 'whatyouhide/vim-gotham'
+  Plug 'whatyouhide/vim-gotham'
   "Plug 'chriskempson/base16-vim'
   "Plug 'morhetz/gruvbox'
   "Plug 'mhinz/vim-janah'
   "Plug 'jpo/vim-railscasts-theme'
-  Plug 'kabbamine/yowish.vim'
-  Plug 'gosukiwi/vim-atom-dark'
+  "Plug 'kabbamine/yowish.vim'
+  "Plug 'gosukiwi/vim-atom-dark'
   Plug 'joshdick/onedark.vim'
   Plug 'NLKNguyen/papercolor-theme'
-  Plug 'nanotech/jellybeans.vim'
+  "Plug 'nanotech/jellybeans.vim'
   Plug 'rakr/vim-one'
+  Plug 'altercation/vim-colors-solarized'
+  "Plug 'arcticicestudio/nord-vim'
+  Plug 'hzchirs/vim-material'
+  Plug 'jaredgorski/SpaceCamp'
+  Plug 'sonph/onehalf', { 'rtp': 'vim' }
+  Plug 'dracula/vim', { 'as': 'dracula' }
+  Plug 'ayu-theme/ayu-vim'
+  Plug 'ciaranm/inkpot'
+  Plug 'connorholyday/vim-snazzy'
 
   " Entorno de Javascript -- https://thoughtbot.com/blog/modern-typescript-and-react-development-in-vim
   Plug 'pangloss/vim-javascript'
@@ -174,11 +186,17 @@ autocmd BufEnter *.{js,jsx,ts,tsx} :syntax sync fromstart
 autocmd BufLeave *.{js,jsx,ts,tsx} :syntax sync clear
 
 " ThemeConfig
-colorscheme PaperColor
+set termguicolors     " enable true colors support
+colorscheme dracula
 set background=dark
-"set background=dark
 
-" Autosave
+" Ayu theme
+" https://github.com/ayu-theme/ayu-vim#installation
+" 'light' | 'mirage' | 'dark'
+let ayucolor='dark' 
+
+
+" " Autosave
 let g:auto_save=1
 let g:auto_save_in_insert_mode = 0  " do not save while in insert mode
 let g:auto_save_no_updatetime = 1
@@ -194,7 +212,7 @@ set sessionoptions-=options
 " Airline
 let g:airline#extensions#tabline#enabled = 1
 let g:airline_powerline_fonts = 0
-let g:airline_theme='angr'
+"let g:airline_theme='angr'
 
 " Compatibilidad
 if !has('gui_running')
@@ -203,6 +221,7 @@ endif
 
 " nerdcommenter config
 let g:NERDSpaceDelims = 1
+let g:NERDCompactSexyComs = 1
 let g:NERDDefaultAlign = 'left'
 
 "-- EMMET CONFIG --
@@ -219,7 +238,6 @@ let g:ctrlp_custom_ignore = '\v[\/](vendor|node_modules)$'
 " CocConfig
 " ==========================================================
 let g:coc_global_extensions = [
-  \ 'coc-tsserver',
   \ 'coc-snippets',
   \ 'coc-eslint',
   \ 'coc-emmet',
@@ -230,7 +248,8 @@ let g:coc_global_extensions = [
   \ 'coc-html',
   \ 'coc-css',
   \ 'coc-sh',
-  \ 'coc-sql'
+  \ 'coc-sql',
+  \ 'coc-python'
   \ ]
 
 " TextEdit might fail if hidden is not set.

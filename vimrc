@@ -1,4 +1,14 @@
-" INDICE
+"  █████   █████ █████ ██████   ██████
+" ░░███   ░░███ ░░███ ░░██████ ██████ 
+"  ░███    ░███  ░███  ░███░█████░███ 
+"  ░███    ░███  ░███  ░███░░███ ░███ 
+"  ░░███   ███   ░███  ░███ ░░░  ░███ 
+"   ░░░█████░    ░███  ░███      ░███ 
+"     ░░███      █████ █████     █████
+"      ░░░      ░░░░░ ░░░░░     ░░░░░ 
+"
+" 2020-11-27 20:06
+" CONTENIDO
 " ======================
 " ConfiguracionBasica
 " MisOpciones
@@ -61,6 +71,13 @@ endif
 set nowrap
 set wildmenu
 
+" au bufnewfile *.sh 0r $HOME/.vim/user-headers/sh-header.sh
+" au bufnewfile *.php 0r $HOME/.vim/user-headers/php-header.php
+
+" Skeleton files
+autocmd BufNewFile  *.sh 0r ~/.vim/skeletons/sh-skeleton.sh
+autocmd BufNewFile  *.php 0r ~/.vim/skeletons/php-skeleton.php
+
 " MisFunciones
 function! UsFormatCode()
   let file_type = expand('%:e')
@@ -86,6 +103,10 @@ function! GoToVSplitView()
   execute 'vert sb ' . currentBuffer
 endfunction
 
+function! InsertCurrentDateTime()
+  execute 'r !printf $(date +\%Y\%m\%d_\%H\%M)'
+endfunction
+
 " Keymaps
 nmap <F1> :bp<CR>
 nmap <F2> :bn<CR>
@@ -98,7 +119,8 @@ nmap <F8> :split<CR>
 nmap <F9> :close<CR>
 nmap <F10> :w!<CR>
 "<F11> FullScreenToggle
-nmap <F12> <Plug>(coc-definition)
+" nnoremap <F12> "=strftime("%Y-%m-%d")<CR>p
+nnoremap <F12> "=strftime("%Y-%m-%d %H:%M")<CR>p
 nmap <C-\> :call GoToVSplitView()<CR>
 nmap <silent> <A-left> :BufSurfBack<CR>
 nmap <silent> <A-right> :BufSurfForward<CR>
@@ -187,7 +209,7 @@ autocmd BufLeave *.{js,jsx,ts,tsx} :syntax sync clear
 
 " ThemeConfig
 set termguicolors     " enable true colors support
-colorscheme dracula
+colorscheme onehalfdark
 set background=dark
 
 " Ayu theme
@@ -211,7 +233,9 @@ set sessionoptions-=options
 
 " Airline
 let g:airline#extensions#tabline#enabled = 1
-let g:airline_powerline_fonts = 0
+if filereadable(expand('/usr/share/fonts/opentype/PowerlineSymbols.otf'))
+  let g:airline_powerline_fonts = 1
+endif
 "let g:airline_theme='angr'
 
 " Compatibilidad
@@ -232,7 +256,11 @@ let g:user_emmet_leader_key=','
 
 " CtrlPConfig
 let g:ctrlp_show_hidden = 1
-let g:ctrlp_custom_ignore = '\v[\/](vendor|node_modules)$'
+let g:ctrlp_custom_ignore = {
+  \ 'dir': '\v[\/](vendor|node_modules)$',
+  \ 'file': '\v\.(swp)$'
+  \ }
+
 
 " ==========================================================
 " CocConfig

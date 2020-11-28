@@ -4,12 +4,12 @@ function! coc#source#php#init() abort
         \ 'priority': 9,
         \ 'filetypes': ['php'],
         \ 'shortcut': 'user',
-        \ 'triggerCharacters': ['']
+        \ 'triggerCharacters': ['id']
         \}
 endfunction
 
 function! coc#source#php#complete(opt, cb) abort
-  let items = ['auth()->user->id', '<?php\n\n']
+  let items = ['auth()->user()->id']
   call a:cb(items)
 endfunction
 

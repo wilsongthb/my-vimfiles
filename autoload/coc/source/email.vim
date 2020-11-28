@@ -8,7 +8,9 @@ function! coc#source#email#init() abort
 endfunction
 
 function! coc#source#email#complete(opt, cb) abort
-  let items = ['foo@gmail.com', 'bar@yahoo.com']
+  let items = [
+    \ 'wilsonaux1@gmail.com'
+    \ ]
   call a:cb(items)
 endfunction
 

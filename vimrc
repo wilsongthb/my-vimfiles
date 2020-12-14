@@ -1,4 +1,5 @@
-"  █████   █████ █████ ██████   ██████
+"
+" █████   █████ █████ ██████   ██████
 " ░░███   ░░███ ░░███ ░░██████ ██████ 
 "  ░███    ░███  ░███  ░███░█████░███ 
 "  ░███    ░███  ░███  ░███░░███ ░███ 
@@ -7,23 +8,9 @@
 "     ░░███      █████ █████     █████
 "      ░░░      ░░░░░ ░░░░░     ░░░░░ 
 "
-" 2020-11-27 20:06
-" CONTENIDO
-" ======================
-" ConfiguracionBasica
-" MisOpciones
-" MisFunciones
-" Keymaps
-" Comandos
-" PlugConfig
-" JavaHighlightsPerform
-" ThemeConfig
-
+" =====================================================
 " ConfiguracionBasica - https://github.com/mhinz/vim-galore/blob/master/static/minimal-vimrc.vim
-"
 " A (not so) minimal vimrc.
-"
-
 " You want Vim, not vi. When Vim finds a vimrc, 'nocompatible' is set anyway.
 " We set it explicitely to make our position clear!
 set nocompatible
@@ -60,26 +47,25 @@ set report      =0         " Always report changed lines.
 set synmaxcol   =200       " Only highlight the first 200 columns.
 
 set list                   " Show non-printable characters.
+
+" show sides in characters format
 if has('multi_byte') && &encoding ==# 'utf-8'
   let &listchars = 'tab:▸ ,extends:❯,precedes:❮,nbsp:±'
 else
   let &listchars = 'tab:> ,extends:>,precedes:<,nbsp:.'
 endif
 
-" MisOpciones
-"set number
-set nowrap
-set wildmenu
-
-" au bufnewfile *.sh 0r $HOME/.vim/user-headers/sh-header.sh
-" au bufnewfile *.php 0r $HOME/.vim/user-headers/php-header.php
+" set number               " Show line numbers
+set nowrap               " Not cut lines
+set wildmenu             " Show suggest in cmd
 
 " Skeleton files
 autocmd BufNewFile  *.sh 0r ~/.vim/skeletons/sh-skeleton.sh
 autocmd BufNewFile  *.php 0r ~/.vim/skeletons/php-skeleton.php
+autocmd BufNewFile  *.vue 0r ~/.vim/skeletons/vue-skeleton.vue
 
 " MisFunciones
-function! UsFormatCode()
+function! CustomFormatCode()
   let file_type = expand('%:e')
   if file_type == 'vue'
     execute "Prettier"
@@ -112,14 +98,13 @@ nmap <F1> :bp<CR>
 nmap <F2> :bn<CR>
 nmap <F3> :Bclose<CR>
 nmap <F4> :NERDTreeToggle<CR>
-nmap <F5> :call UsFormatCode()<CR>
+nmap <F5> :call CustomFormatCode()<CR>
 nmap <F6> :NERDTreeFind<CR>
 nmap <F7> :vsplit<CR>
 nmap <F8> :split<CR>
 nmap <F9> :close<CR>
 nmap <F10> :w!<CR>
 "<F11> FullScreenToggle
-" nnoremap <F12> "=strftime("%Y-%m-%d")<CR>p
 nnoremap <F12> "=strftime("%Y-%m-%d %H:%M")<CR>p
 nmap <C-\> :call GoToVSplitView()<CR>
 nmap <silent> <A-left> :BufSurfBack<CR>
@@ -167,39 +152,40 @@ call plug#begin(s:bundle_dir)
   Plug 'preservim/nerdcommenter'
   Plug 'adelarsq/vim-matchit'
   Plug 'jiangmiao/auto-pairs'
-  "Plug 'junegunn/fzf.vim' "para buscar en todos los archivos"
-  "Plug 'airblade/vim-gitgutter'
+  " Plug 'junegunn/fzf.vim' "para buscar en todos los archivos"
+  " Plug 'airblade/vim-gitgutter'
 
-  " Temas de color
-  "Plug 'tomasr/molokai'
-  Plug 'whatyouhide/vim-gotham'
-  "Plug 'chriskempson/base16-vim'
-  "Plug 'morhetz/gruvbox'
-  "Plug 'mhinz/vim-janah'
-  "Plug 'jpo/vim-railscasts-theme'
-  "Plug 'kabbamine/yowish.vim'
-  "Plug 'gosukiwi/vim-atom-dark'
+  " COLOR THEMES ########################################
+  " Plug 'tomasr/molokai'
+  " Plug 'whatyouhide/vim-gotham'
+  " Plug 'chriskempson/base16-vim'
+  " Plug 'morhetz/gruvbox'
+  " Plug 'mhinz/vim-janah'
+  " Plug 'jpo/vim-railscasts-theme'
+  " Plug 'kabbamine/yowish.vim'
+  " Plug 'gosukiwi/vim-atom-dark'
   Plug 'joshdick/onedark.vim'
-  Plug 'NLKNguyen/papercolor-theme'
-  "Plug 'nanotech/jellybeans.vim'
-  Plug 'rakr/vim-one'
-  Plug 'altercation/vim-colors-solarized'
-  "Plug 'arcticicestudio/nord-vim'
-  Plug 'hzchirs/vim-material'
-  Plug 'jaredgorski/SpaceCamp'
-  Plug 'sonph/onehalf', { 'rtp': 'vim' }
-  Plug 'dracula/vim', { 'as': 'dracula' }
-  Plug 'ayu-theme/ayu-vim'
-  Plug 'ciaranm/inkpot'
-  Plug 'connorholyday/vim-snazzy'
+  " Plug 'NLKNguyen/papercolor-theme'
+  " Plug 'nanotech/jellybeans.vim'
+  " Plug 'rakr/vim-one'
+  " Plug 'altercation/vim-colors-solarized'
+  " Plug 'arcticicestudio/nord-vim'
+  " Plug 'hzchirs/vim-material'
+  " Plug 'jaredgorski/SpaceCamp'
+  " Plug 'sonph/onehalf', { 'rtp': 'vim' }
+  " Plug 'dracula/vim', { 'as': 'dracula' }
+  " Plug 'ayu-theme/ayu-vim'
+  " Plug 'ciaranm/inkpot'
+  " Plug 'connorholyday/vim-snazzy'
+  " END COLOR THEMES ######################################
 
   " Entorno de Javascript -- https://thoughtbot.com/blog/modern-typescript-and-react-development-in-vim
   Plug 'pangloss/vim-javascript'
   Plug 'leafgarland/typescript-vim'
   Plug 'MaxMEllon/vim-jsx-pretty'
-  "Plug 'peitalin/vim-jsx-typescript'
-  "Plug 'styled-components/vim-styled-components', { 'branch': 'main' }
-  "Plug 'jparise/vim-graphql'
+  " Plug 'peitalin/vim-jsx-typescript'
+  " Plug 'styled-components/vim-styled-components', { 'branch': 'main' }
+  " Plug 'jparise/vim-graphql'
 
 call plug#end()
 
@@ -207,20 +193,24 @@ call plug#end()
 autocmd BufEnter *.{js,jsx,ts,tsx} :syntax sync fromstart
 autocmd BufLeave *.{js,jsx,ts,tsx} :syntax sync clear
 
-" ThemeConfig
+" Theme And Compatibility config
 set termguicolors     " enable true colors support
-colorscheme onehalfdark
+colorscheme onedark
 set background=dark
+" Resolve problems with mingw shell and emulated shells
+if !has('gui_running')
+  set t_Co=256
+endif
 
 " Ayu theme
 " https://github.com/ayu-theme/ayu-vim#installation
 " 'light' | 'mirage' | 'dark'
 let ayucolor='dark' 
 
-
-" " Autosave
+" Autosave
+" ref: https://github.com/vim-scripts/vim-auto-save
 let g:auto_save=1
-let g:auto_save_in_insert_mode = 0  " do not save while in insert mode
+let g:auto_save_in_insert_mode = 0  " do not save while writing in insert mode
 let g:auto_save_no_updatetime = 1
 
 " Session
@@ -233,14 +223,10 @@ set sessionoptions-=options
 
 " Airline
 let g:airline#extensions#tabline#enabled = 1
-if filereadable(expand('/usr/share/fonts/opentype/PowerlineSymbols.otf'))
+" let sshTty = $SSH_TTY
+" Check if it'snt a ssh conection and if have powerline script to enable powerline fonts
+if strlen($SSH_TTY) == 0 && filereadable(expand('/usr/share/fonts/opentype/PowerlineSymbols.otf'))
   let g:airline_powerline_fonts = 1
-endif
-"let g:airline_theme='angr'
-
-" Compatibilidad
-if !has('gui_running')
-  set t_Co=256
 endif
 
 " nerdcommenter config
@@ -248,7 +234,7 @@ let g:NERDSpaceDelims = 1
 let g:NERDCompactSexyComs = 1
 let g:NERDDefaultAlign = 'left'
 
-"-- EMMET CONFIG --
+" Emmet config
 let g:user_emmet_leader_key=','
 
 " Wildignore
@@ -257,180 +243,33 @@ let g:user_emmet_leader_key=','
 " CtrlPConfig
 let g:ctrlp_show_hidden = 1
 let g:ctrlp_custom_ignore = {
-  \ 'dir': '\v[\/](vendor|node_modules)$',
+  \ 'dir': '\v[\/](vendor|node_modules|.git)$',
   \ 'file': '\v\.(swp)$'
   \ }
 
 
 " ==========================================================
-" CocConfig
+" COC CONFIG
 " ==========================================================
-let g:coc_global_extensions = [
-  \ 'coc-snippets',
-  \ 'coc-eslint',
-  \ 'coc-emmet',
-  \ 'coc-vetur',
-  \ 'coc-tsserver',
-  \ 'coc-phpls',
-  \ 'coc-json',
-  \ 'coc-html',
-  \ 'coc-css',
-  \ 'coc-sh',
-  \ 'coc-sql',
-  \ 'coc-python'
-  \ ]
+source ~/.vim/coc_config.vim
 
-" TextEdit might fail if hidden is not set.
-set hidden
+" EXTENCIONS
+"let g:coc_global_extensions = [
+"   \ 'coc-snippets',
+"   \ 'coc-eslint',
+"   \ 'coc-emmet',
+"   \ 'coc-vetur',
+"   \ 'coc-tsserver',
+"   \ 'coc-phpls',
+"   \ 'coc-json',
+"   \ 'coc-html',
+"   \ 'coc-css',
+"   \ 'coc-sh',
+"   \ 'coc-sql',
+"   \ 'coc-python',
+"   \ ]
 
-" Some servers have issues with backup files, see #649.
-set nobackup
-set nowritebackup
+if filereadable('~/.vim/coc_extensions.vim')
+  source ~/.vim/coc_extensions.vim
+endif
 
-" Give more space for displaying messages.
-set cmdheight=2
-
-" Having longer updatetime (default is 4000 ms = 4 s) leads to noticeable
-" delays and poor user experience.
-set updatetime=300
-
-" Don't pass messages to |ins-completion-menu|.
-set shortmess+=c
-
-" Always show the signcolumn, otherwise it would shift the text each time
-" diagnostics appear/become resolved.
-"set signcolumn=yes
-
-" Use tab for trigger completion with characters ahead and navigate.
-" NOTE: Use command ':verbose imap <tab>' to make sure tab is not mapped by
-" other plugin before putting this into your config.
-inoremap <silent><expr> <TAB>
-      \ pumvisible() ? "\<C-n>" :
-      \ <SID>check_back_space() ? "\<TAB>" :
-      \ coc#refresh()
-inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
-
-function! s:check_back_space() abort
-  let col = col('.') - 1
-  return !col || getline('.')[col - 1]  =~# '\s'
-endfunction
-
-" Use <c-space> to trigger completion.
-inoremap <silent><expr> <c-space> coc#refresh()
-
-" Use <cr> to confirm completion, `<C-g>u` means break undo chain at current
-" position. Coc only does snippet and additional edit on confirm.
-" if has('patch8.1.1068')
-"   " Use `complete_info` if your (Neo)Vim version supports it.
-"   inoremap <expr> <cr> complete_info()["selected"] != "-1" ? "\<C-y>" : "\<C-g>u\<CR>"
-" else
-"   imap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
-" endif
-
-" Use `[g` and `]g` to navigate diagnostics
-nmap <silent> [g <Plug>(coc-diagnostic-prev)
-nmap <silent> ]g <Plug>(coc-diagnostic-next)
-
-" GoTo code navigation.
-nmap <silent> gd <Plug>(coc-definition)
-nmap <silent> gy <Plug>(coc-type-definition)
-nmap <silent> gi <Plug>(coc-implementation)
-nmap <silent> gr <Plug>(coc-references)
-
-" Use K to show documentation in preview window.
-nnoremap <silent> K :call <SID>show_documentation()<CR>
-
-function! s:show_documentation()
-  if (index(['vim','help'], &filetype) >= 0)
-    execute 'h '.expand('<cword>')
-  else
-    call CocAction('doHover')
-  endif
-endfunction
-
-" Highlight the symbol and its references when holding the cursor.
-autocmd CursorHold * silent call CocActionAsync('highlight')
-
-" Symbol renaming.
-nmap <leader>rn <Plug>(coc-rename)
-
-" Formatting selected code.
-xmap <leader>f  <Plug>(coc-format-selected)
-nmap <leader>f  <Plug>(coc-format-selected)
-
-augroup mygroup
-  autocmd!
-  " Setup formatexpr specified filetype(s).
-  autocmd FileType typescript,json setl formatexpr=CocAction('formatSelected')
-  " Update signature help on jump placeholder.
-  autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
-augroup end
-
-" Applying codeAction to the selected region.
-" Example: `<leader>aap` for current paragraph
-xmap <leader>a  <Plug>(coc-codeaction-selected)
-nmap <leader>a  <Plug>(coc-codeaction-selected)
-
-" Remap keys for applying codeAction to the current line.
-nmap <leader>ac  <Plug>(coc-codeaction)
-" Apply AutoFix to problem on the current line.
-nmap <leader>qf  <Plug>(coc-fix-current)
-
-" Introduce function text object
-" NOTE: Requires 'textDocument.documentSymbol' support from the language server.
-xmap if <Plug>(coc-funcobj-i)
-xmap af <Plug>(coc-funcobj-a)
-omap if <Plug>(coc-funcobj-i)
-omap af <Plug>(coc-funcobj-a)
-
-" Use <TAB> for selections ranges.
-" NOTE: Requires 'textDocument/selectionRange' support from the language server.
-" coc-tsserver, coc-python are the examples of servers that support it.
-nmap <silent> <TAB> <Plug>(coc-range-select)
-xmap <silent> <TAB> <Plug>(coc-range-select)
-
-" Add `:Format` command to format current buffer.
-command! -nargs=0 Format :call CocAction('format')
-
-" Add `:Fold` command to fold current buffer.
-command! -nargs=? Fold :call     CocAction('fold', <f-args>)
-
-" Add `:OR` command for organize imports of the current buffer.
-command! -nargs=0 OR   :call     CocAction('runCommand', 'editor.action.organizeImport')
-
-" Add (Neo)Vim's native statusline support.
-" NOTE: Please see `:h coc-status` for integrations with external plugins that
-" provide custom statusline: lightline.vim, vim-airline.
-set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
-
-" Mappings using CoCList:
-" Show all diagnostics.
-nnoremap <silent> <space>a  :<C-u>CocList diagnostics<cr>
-" Manage extensions.
-nnoremap <silent> <space>e  :<C-u>CocList extensions<cr>
-" Show commands.
-nnoremap <silent> <space>c  :<C-u>CocList commands<cr>
-" Find symbol of current document.
-nnoremap <silent> <space>o  :<C-u>CocList outline<cr>
-" Search workspace symbols.
-nnoremap <silent> <space>s  :<C-u>CocList -I symbols<cr>
-" Do default action for next item.
-nnoremap <silent> <space>j  :<C-u>CocNext<CR>
-" Do default action for previous item.
-nnoremap <silent> <space>k  :<C-u>CocPrev<CR>
-" Resume latest coc list.
-nnoremap <silent> <space>p  :<C-u>CocListResume<CR>
-
-" coc-snippets
-inoremap <silent><expr> <TAB>
-      \ pumvisible() ? coc#_select_confirm() :
-      \ coc#expandableOrJumpable() ? "\<C-r>=coc#rpc#request('doKeymap', ['snippets-expand-jump',''])\<CR>" :
-      \ <SID>check_back_space() ? "\<TAB>" :
-      \ coc#refresh()
-
-function! s:check_back_space() abort
-  let col = col('.') - 1
-  return !col || getline('.')[col - 1]  =~# '\s'
-endfunction
-
-let g:coc_snippet_next = '<tab>'

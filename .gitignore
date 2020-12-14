@@ -1,2 +1,3 @@
 .session.vim
 bundle/**
+coc_extensions.vim

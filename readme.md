@@ -1,5 +1,7 @@
 # NOTA
-las carpetas y archivos de _plugins son plugins que no estan en un repositorio, por tanto no deben ser eliminados
+
+las carpetas y archivos de _plugins son plugins que no estan en un
+repositorio, por tanto no deben ser eliminados
 
 Requiere CURL instalado en linea de comandos
 Requiere yarn
@@ -16,9 +18,9 @@ git clone git@github.com:wilsongthb/my-vimfiles.git ~/.vim
 ```bash
 git clone https://github.com/wilsongthb/my-vimfiles.git ~/.vim
 ```
-### After
+
+### After COPY COC SNIPPETS
 ```bash
-vim -c 'PlugInstall'
 mkdir -p ~/.config/coc && ln -s ~/.vim/coc_ultisnips/ ~/.config/coc/ultisnips
 ```
 

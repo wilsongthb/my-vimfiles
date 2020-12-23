@@ -59,6 +59,17 @@ endif
 set nowrap               " Not cut lines
 set wildmenu             " Show suggest in cmd
 
+" NetrwConfig
+" let g:netrw_banner = 1
+" let g:netrw_liststyle = 3
+" let g:netrw_browse_split = 4
+" let g:netrw_altv = 1
+" let g:netrw_winsize = 20
+" augroup ProjectDrawer
+"   autocmd!
+"   autocmd VimEnter * :Vexplore
+" augroup END
+
 " Skeleton files
 autocmd BufNewFile  *.sh 0r ~/.vim/skeletons/sh-skeleton.sh
 autocmd BufNewFile  *.php 0r ~/.vim/skeletons/php-skeleton.php
@@ -97,9 +108,9 @@ endfunction
 nmap <F1> :bp<CR>
 nmap <F2> :bn<CR>
 nmap <F3> :Bclose<CR>
-nmap <F4> :NERDTreeToggle<CR>
+nmap <F4> :NERDTreeFind<CR>
 nmap <F5> :call CustomFormatCode()<CR>
-nmap <F6> :NERDTreeFind<CR>
+nmap <F6> :Unite buffer<CR>
 nmap <F7> :vsplit<CR>
 nmap <F8> :split<CR>
 nmap <F9> :close<CR>
@@ -109,15 +120,17 @@ nnoremap <F12> "=strftime("%Y-%m-%d %H:%M")<CR>p
 nmap <C-\> :call GoToVSplitView()<CR>
 nmap <silent> <A-left> :BufSurfBack<CR>
 nmap <silent> <A-right> :BufSurfForward<CR>
-noremap <Leader>y "*y
-noremap <Leader>p "*p
-noremap <Leader>Y "+y
-noremap <Leader>P "+p
 
 " Comandos
 command CopyToClipboard call CopyToClipboard()
 command! CloseAllInBuffer execute '%bdelete|edit #|normal `"'
 command! ExecuteCurrentLineInBash execute '.w !bash'
+
+" InteracionConClipboard
+" noremap <Leader>y "*y
+" noremap <Leader>p "*p
+" noremap <Leader>Y "+y
+" noremap <Leader>P "+p
 
 " RuntimePath
 set runtimepath^=~/.vim/_plugins/bclose
@@ -125,6 +138,12 @@ set runtimepath^=~/.vim/_plugins/bclose
 "set runtimepath^=~/.vim/_plugins/vim-l9
 "set runtimepath^=~/.vim/_plugins/vim-fuzzyfinder " depende de vim-l9
 "let g:fuf_coveragefile_exclude = '\v\~$|\.(o|exe|dll|bak|orig|swp)$|(^|[/\\])\.(hg|git|bzr)($|[/\\])|(^|[/\\])(vendor|node_modules)'
+
+" Auto install Plug
+" if empty(glob('~/.vim/autoload/plug.vim'))
+"   silent execute "!curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim"
+"   autocmd VimEnter * PlugInstall | source $MYVIMRC
+" endif
 
 " PlugConfig
 let s:is_win = has('win32')
@@ -135,27 +154,28 @@ call plug#begin(s:bundle_dir)
   Plug 'xolox/vim-misc'
   Plug 'xolox/vim-session'
   Plug 'preservim/nerdtree'
-  Plug 'posva/vim-vue'
   Plug 'vim-airline/vim-airline'
   Plug 'vim-airline/vim-airline-themes'
   Plug 'terryma/vim-multiple-cursors'
   Plug 'mattn/emmet-vim'
-  Plug 'StanAngeloff/php.vim'
-  Plug 'pangloss/vim-javascript'
   Plug 'Shougo/unite.vim'
   Plug 'ctrlpvim/ctrlp.vim'
-  Plug 'othree/es.next.syntax.vim'
-  Plug 'othree/javascript-libraries-syntax.vim'
   Plug 'prettier/vim-prettier'
   Plug 'neoclide/coc.nvim', {'branch': 'release'}
   Plug 'ton/vim-bufsurf'
   Plug 'preservim/nerdcommenter'
-  Plug 'adelarsq/vim-matchit'
+  Plug 'adelarsq/vim-matchit' " Extend % operator
   Plug 'jiangmiao/auto-pairs'
+  Plug 'jlanzarotta/bufexplorer'
   " Plug 'junegunn/fzf.vim' "para buscar en todos los archivos"
   " Plug 'airblade/vim-gitgutter'
 
   " COLOR THEMES ########################################
+  Plug 'NLKNguyen/papercolor-theme'
+  " Plug 'tomasiser/vim-code-dark'
+  " Plug 'rakr/vim-one'
+  " Plug 'altercation/vim-colors-solarized'
+  " Plug 'joshdick/onedark.vim'
   " Plug 'tomasr/molokai'
   " Plug 'whatyouhide/vim-gotham'
   " Plug 'chriskempson/base16-vim'
@@ -164,11 +184,7 @@ call plug#begin(s:bundle_dir)
   " Plug 'jpo/vim-railscasts-theme'
   " Plug 'kabbamine/yowish.vim'
   " Plug 'gosukiwi/vim-atom-dark'
-  Plug 'joshdick/onedark.vim'
-  " Plug 'NLKNguyen/papercolor-theme'
   " Plug 'nanotech/jellybeans.vim'
-  " Plug 'rakr/vim-one'
-  " Plug 'altercation/vim-colors-solarized'
   " Plug 'arcticicestudio/nord-vim'
   " Plug 'hzchirs/vim-material'
   " Plug 'jaredgorski/SpaceCamp'
@@ -179,7 +195,17 @@ call plug#begin(s:bundle_dir)
   " Plug 'connorholyday/vim-snazzy'
   " END COLOR THEMES ######################################
 
-  " Entorno de Javascript -- https://thoughtbot.com/blog/modern-typescript-and-react-development-in-vim
+  "# LANGUAGE SUPPORT =========================================
+  Plug 'StanAngeloff/php.vim'
+  Plug 'posva/vim-vue'
+  Plug 'othree/es.next.syntax.vim'
+  Plug 'othree/javascript-libraries-syntax.vim'
+  Plug 'plasticboy/vim-markdown'
+  Plug 'elzr/vim-json'
+  Plug 'vim-python/python-syntax'
+
+  " Entorno de Javascript
+  " ref: https://thoughtbot.com/blog/modern-typescript-and-react-development-in-vim
   Plug 'pangloss/vim-javascript'
   Plug 'leafgarland/typescript-vim'
   Plug 'MaxMEllon/vim-jsx-pretty'
@@ -187,7 +213,16 @@ call plug#begin(s:bundle_dir)
   " Plug 'styled-components/vim-styled-components', { 'branch': 'main' }
   " Plug 'jparise/vim-graphql'
 
+  "# END LANGUAGE SUPPORT =====================================
+
+  
 call plug#end()
+
+" Install if bundle not exists
+if empty(glob(s:bundle_dir))
+  " autocmd VimEnter * PlugInstall | source $MYVIMRC
+  exec "PlugInstall"
+endif
 
 " JavaHighlightsPerform
 autocmd BufEnter *.{js,jsx,ts,tsx} :syntax sync fromstart
@@ -195,8 +230,8 @@ autocmd BufLeave *.{js,jsx,ts,tsx} :syntax sync clear
 
 " Theme And Compatibility config
 set termguicolors     " enable true colors support
-colorscheme onedark
-set background=dark
+colorscheme PaperColor
+set background=light
 " Resolve problems with mingw shell and emulated shells
 if !has('gui_running')
   set t_Co=256
@@ -219,7 +254,7 @@ let g:session_autoload='yes'
 let g:session_directory='./'
 let g:session_default_name='.session'
 let g:session_default_overwrite='yes'
-set sessionoptions-=options
+set sessionoptions-=options,curdir,folds
 
 " Airline
 let g:airline#extensions#tabline#enabled = 1
@@ -247,6 +282,11 @@ let g:ctrlp_custom_ignore = {
   \ 'file': '\v\.(swp)$'
   \ }
 
+" Do we have local vimrc?
+if filereadable('.vimrc.local')
+  " If so, go ahead and load it.
+  source .vimrc.local
+endif
 
 " ==========================================================
 " COC CONFIG
@@ -269,7 +309,7 @@ source ~/.vim/coc_config.vim
 "   \ 'coc-python',
 "   \ ]
 
-if filereadable('~/.vim/coc_extensions.vim')
-  source ~/.vim/coc_extensions.vim
+if filereadable('~/.vim/coc_ext.vim')
+  source ~/.vim/coc_ext.vim
 endif
 

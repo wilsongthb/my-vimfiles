@@ -1,0 +1,12 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhistcnt =4
+let g:netrw_dirhist_4='/home/wilson/dev/ltadmin/dinner-client/src'
+let g:netrw_dirhist_3='/home/wilson/dev/ltadmin/dinner-client'
+let g:netrw_dirhist_2='/home/wilson/dev/ltadmin/logistic-client/src/logistic-module/sm'
+let g:netrw_dirhist_1='/home/wilson/dev/ltadmin/logistic-client/src/logistic-module'
+let g:netrw_dirhist_0='/home/wilson/dev/ltadmin/logistic-client/src'
+let g:netrw_dirhist_9='/home/wilson/dev/ltadmin/logistic-client'
+let g:netrw_dirhist_8='/home/wilson/.vim/autoload'
+let g:netrw_dirhist_7='/home/wilson/.vim'
+let g:netrw_dirhist_6='/home/wilson'
+let g:netrw_dirhist_5='/home/wilson/.vim'

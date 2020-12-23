@@ -23,15 +23,6 @@
 #		endsnippet
 #
 # Online reference: https://github.com/SirVer/ultisnips/blob/master/doc/UltiSnips.txt
-
-snippet authid "User id from auth" b
-auth()->id()$1
-endsnippet
-
-snippet userid "User id shortcut" b
-auth()->id()$1
-endsnippet
-
 snippet beginTrans "Begin database transaction" b
 try {
   DB::beginTransaction();
@@ -40,11 +31,13 @@ try {
 } catch (\Throwable $th) {
   DB::rollback();
   report($th);
-  abort(500, $th->getMessage());
+  return response()->json([
+    'message' => $th->getMessage()
+  ], 500);
 }
 endsnippet
 
-snippet  mkerror "Make custom throw error" b
+snippet mkerror "Make custom throw error" b
 throw new \Exception("$1", 1);
 endsnippet
 
@@ -61,7 +54,21 @@ endsnippet
 snippet mktry "Make try catch region" b
 try {
   $1
-} catch(\Exception $error) {
+} catch(\Throwable $error) {
   // handle error
 }
+endsnippet
+
+snippet getInstance "Make get instance method" b
+/**
+  * return $1
+  */
+public static function getInstance($id) 
+{
+  return $1::find($id);
+}
+endsnippet
+
+snippet userid "Auth user index" i
+auth()->id()
 endsnippet

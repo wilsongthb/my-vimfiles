@@ -75,6 +75,10 @@ autocmd BufNewFile  *.sh 0r ~/.vim/skeletons/sh-skeleton.sh
 autocmd BufNewFile  *.php 0r ~/.vim/skeletons/php-skeleton.php
 autocmd BufNewFile  *.vue 0r ~/.vim/skeletons/vue-skeleton.vue
 
+" INSERT DATETIME CREATED
+" Source: https://vim.fandom.com/wiki/Use_eval_to_create_dynamic_templates
+autocmd BufNewFile * %substitute#\[:VIM_EVAL:\]\(.\{-\}\)\[:END_EVAL:\]#\=eval(submatch(1))#ge
+
 " MisFunciones
 function! CustomFormatCode()
   let file_type = expand('%:e')
@@ -108,9 +112,12 @@ endfunction
 nmap <F1> :bp<CR>
 nmap <F2> :bn<CR>
 nmap <F3> :Bclose<CR>
-nmap <F4> :NERDTreeFind<CR>
+" nmap <F4> :NERDTreeToggle<CR>
+" nmap <F4> :edit .<CR>
+nmap <F4> :Explore<CR>
 nmap <F5> :call CustomFormatCode()<CR>
-nmap <F6> :Unite buffer<CR>
+" nmap <F6> :NERDTreeFind<CR>
+" nmap <F6> :Explore<CR>
 nmap <F7> :vsplit<CR>
 nmap <F8> :split<CR>
 nmap <F9> :close<CR>
@@ -125,6 +132,8 @@ nmap <silent> <A-right> :BufSurfForward<CR>
 command CopyToClipboard call CopyToClipboard()
 command! CloseAllInBuffer execute '%bdelete|edit #|normal `"'
 command! ExecuteCurrentLineInBash execute '.w !bash'
+command PutDateTime execute 'r !printf $(date "+\%Y-\%m-\%d_\%H:\%M")'
+
 
 " InteracionConClipboard
 " noremap <Leader>y "*y
@@ -153,7 +162,7 @@ call plug#begin(s:bundle_dir)
   Plug 'vim-scripts/vim-auto-save'
   Plug 'xolox/vim-misc'
   Plug 'xolox/vim-session'
-  Plug 'preservim/nerdtree'
+  " Plug 'preservim/nerdtree'
   Plug 'vim-airline/vim-airline'
   Plug 'vim-airline/vim-airline-themes'
   Plug 'terryma/vim-multiple-cursors'
@@ -172,8 +181,8 @@ call plug#begin(s:bundle_dir)
 
   " COLOR THEMES ########################################
   Plug 'NLKNguyen/papercolor-theme'
+  Plug 'rakr/vim-one'
   " Plug 'tomasiser/vim-code-dark'
-  " Plug 'rakr/vim-one'
   " Plug 'altercation/vim-colors-solarized'
   " Plug 'joshdick/onedark.vim'
   " Plug 'tomasr/molokai'
@@ -254,7 +263,7 @@ let g:session_autoload='yes'
 let g:session_directory='./'
 let g:session_default_name='.session'
 let g:session_default_overwrite='yes'
-set sessionoptions-=options,curdir,folds
+set sessionoptions-=options,curdir,folds,buffers
 
 " Airline
 let g:airline#extensions#tabline#enabled = 1
@@ -310,6 +319,6 @@ source ~/.vim/coc_config.vim
 "   \ ]
 
 if filereadable('~/.vim/coc_ext.vim')
-  source ~/.vim/coc_ext.vim
+  source ~/.vim/coc_list.vim
 endif
 

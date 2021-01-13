@@ -2,3 +2,5 @@
 bundle/**
 coc_extensions.vim
 coc_ext.vim
+_plugins/bclose/.netrwhist
+coc_list.vim

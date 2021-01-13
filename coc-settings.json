@@ -1,3 +1,5 @@
 {
-  "javascript.validate.enable": false
+  "javascript.validate.enable": false,
+  "python.linting.enabled": false,
+  "python.analysis.diagnosticEnabled": false
 }

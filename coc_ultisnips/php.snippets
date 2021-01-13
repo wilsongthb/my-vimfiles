@@ -59,11 +59,22 @@ try {
 }
 endsnippet
 
-snippet getInstance "Make get instance method" b
+snippet mkrestry "Make try to controller" b
+try {
+  $1
+} catch(\Throwable $error) {
+  // handle error
+  return response()->json([
+    'message' => $error->getMessage()
+  ], 500);
+}
+endsnippet
+
+snippet mkgetIns "Make get instance method" b
 /**
   * return $1
   */
-public static function getInstance($id) 
+public static function getInstance($id) : $1
 {
   return $1::find($id);
 }

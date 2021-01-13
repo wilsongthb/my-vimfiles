@@ -318,7 +318,7 @@ source ~/.vim/coc_config.vim
 "   \ 'coc-python',
 "   \ ]
 
-if filereadable('~/.vim/coc_list.vim')
+if filereadable(expand('~/.vim/coc_list.vim'))
   source ~/.vim/coc_list.vim
 endif
 

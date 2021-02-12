@@ -58,8 +58,11 @@ endif
 " set number               " Show line numbers
 set nowrap               " Not cut lines
 set wildmenu             " Show suggest in cmd
+set nofoldenable      "" disable folding
 
 " NetrwConfig
+" let g:netrw_use_noswf= 1
+let g:netrw_list_hide= '\(^\|\s\s\)\zs\.\S\+.swp'
 " let g:netrw_banner = 1
 " let g:netrw_liststyle = 3
 " let g:netrw_browse_split = 4
@@ -74,6 +77,9 @@ set wildmenu             " Show suggest in cmd
 autocmd BufNewFile  *.sh 0r ~/.vim/skeletons/sh-skeleton.sh
 autocmd BufNewFile  *.php 0r ~/.vim/skeletons/php-skeleton.php
 autocmd BufNewFile  *.vue 0r ~/.vim/skeletons/vue-skeleton.vue
+autocmd BufNewFile  .prettierrc.json 0r ~/.vim/skeletons/.prettierrc.json
+autocmd BufNewFile  jsconfig.json 0r ~/.vim/skeletons/jsconfig.json
+autocmd BufNewFile  vue.config.js 0r ~/.vim/skeletons/vue.config.js
 
 " INSERT DATETIME CREATED
 " Source: https://vim.fandom.com/wiki/Use_eval_to_create_dynamic_templates
@@ -239,8 +245,8 @@ autocmd BufLeave *.{js,jsx,ts,tsx} :syntax sync clear
 
 " Theme And Compatibility config
 set termguicolors     " enable true colors support
-colorscheme PaperColor
-set background=light
+colorscheme one
+set background=dark
 " Resolve problems with mingw shell and emulated shells
 if !has('gui_running')
   set t_Co=256

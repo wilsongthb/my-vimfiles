@@ -74,7 +74,7 @@ snippet mkgetIns "Make get instance method" b
 /**
   * return $1
   */
-public static function getInstance($id) : $1
+public static function getInstance(int $id) : $1
 {
   return $1::find($id);
 }

@@ -23,11 +23,16 @@
 #		endsnippet
 #
 # Online reference: https://github.com/SirVer/ultisnips/blob/master/doc/UltiSnips.txt
+snippet mkerror "Make custom error" b
+throw "$1";
+endsnippet
 
 snippet mktry "Make try catch segment" b
 try {
   $1
 } catch (e) {
+  //
+} finally {
   //
 }
 endsnippet
@@ -48,7 +53,7 @@ static async get$1(id) {
 }
 
 static async save$1(reg) {
-  if (reg.id === undefined) {
+  if (reg.id === undefined || reg.id === null) {
     return (await http.post("api/$2", reg)).data;
   } else {
     return (await http.put(\`api/$2/\${reg.id}\`, reg)).data;
@@ -58,7 +63,6 @@ static async save$1(reg) {
 static async delete$1(id) {
   return (await http.delete(\`api/$2/\${id}\`)).data;
 }
-
 endsnippet
 
 

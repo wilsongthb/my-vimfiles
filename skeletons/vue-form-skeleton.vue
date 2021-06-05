@@ -1,10 +1,13 @@
 <!-- Author: Wilson Pilco Nunez -->
 <!-- Email: wilsonaux1@gmail.com -->
-<!-- Created at: [:VIM_EVAL:]strftime('%Y-%m-%d %H:%M')[:END_EVAL:] -->
+<!-- Created at: 2021-04-15 17:06 -->
 <template>
   <div></div>
 </template>
 <script>
+const formRules = {
+  //
+};
 export default {
   components: {
     //
@@ -14,15 +17,19 @@ export default {
   // filters
 
   props: {
-    //
+    disabled: {
+      default: false
+    }
   },
 
   data: () => ({
-    //
+    sending: false
   }),
 
   computed: {
-    //
+    errors() {
+      return false;
+    }
   },
 
   // watch: {},
@@ -32,9 +39,18 @@ export default {
   },
 
   methods: {
-    //
+    save() {
+      //
+    },
+    reset() {
+      //
+    },
+    setValue() {
+      //
+    }
   }
 };
 </script>
 
 <style scoped></style>
+

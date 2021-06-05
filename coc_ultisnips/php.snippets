@@ -32,6 +32,7 @@ try {
   DB::rollback();
   report($th);
   return response()->json([
+    'code' => $th->getCode(),
     'message' => $th->getMessage()
   ], 500);
 }
@@ -62,10 +63,12 @@ endsnippet
 snippet mkrestry "Make try to controller" b
 try {
   $1
-} catch(\Throwable $error) {
+} catch(\Throwable $th) {
   // handle error
+  report($th);
   return response()->json([
-    'message' => $error->getMessage()
+    'code' => $th->getCode(),
+    'message' => $th->getMessage()
   ], 500);
 }
 endsnippet

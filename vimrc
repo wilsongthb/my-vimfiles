@@ -13,6 +13,7 @@
 " A (not so) minimal vimrc.
 " You want Vim, not vi. When Vim finds a vimrc, 'nocompatible' is set anyway.
 " We set it explicitely to make our position clear!
+" 2021-06-05 10:38
 set nocompatible
 
 filetype plugin indent on  " Load plugins according to detected filetype.
@@ -41,7 +42,7 @@ set lazyredraw             " Only redraw when necessary.
 set splitbelow             " Open new windows below the current window.
 set splitright             " Open new windows right of the current window.
 
-set cursorline             " Find the current line quickly.
+" set cursorline             " Find the current line quickly.
 set wrapscan               " Searches wrap around end-of-file.
 set report      =0         " Always report changed lines.
 set synmaxcol   =200       " Only highlight the first 200 columns.
@@ -77,6 +78,9 @@ let g:netrw_list_hide= '\(^\|\s\s\)\zs\.\S\+.swp'
 autocmd BufNewFile  *.sh 0r ~/.vim/skeletons/sh-skeleton.sh
 autocmd BufNewFile  *.php 0r ~/.vim/skeletons/php-skeleton.php
 autocmd BufNewFile  *.vue 0r ~/.vim/skeletons/vue-skeleton.vue
+" autocmd BufNewFile  *Form.vue 0r ~/.vim/skeletons/vue-form-skeleton.vue
+
+" VUE DEFAULT ENV
 autocmd BufNewFile  .prettierrc.json 0r ~/.vim/skeletons/.prettierrc.json
 autocmd BufNewFile  jsconfig.json 0r ~/.vim/skeletons/jsconfig.json
 autocmd BufNewFile  vue.config.js 0r ~/.vim/skeletons/vue.config.js
@@ -134,6 +138,15 @@ nmap <C-\> :call GoToVSplitView()<CR>
 nmap <silent> <A-left> :BufSurfBack<CR>
 nmap <silent> <A-right> :BufSurfForward<CR>
 
+augroup netrw_mapping
+    autocmd!
+    autocmd filetype netrw call NetrwMapping()
+augroup END
+
+function! NetrwMapping()
+    noremap <buffer> <F1> :bp<CR>
+endfunction
+
 " Comandos
 command CopyToClipboard call CopyToClipboard()
 command! CloseAllInBuffer execute '%bdelete|edit #|normal `"'
@@ -186,28 +199,28 @@ call plug#begin(s:bundle_dir)
   " Plug 'airblade/vim-gitgutter'
 
   " COLOR THEMES ########################################
-  Plug 'NLKNguyen/papercolor-theme'
-  Plug 'rakr/vim-one'
+  " Plug 'NLKNguyen/papercolor-theme'
+  " Plug 'rakr/vim-one'
+  " Plug 'whatyouhide/vim-gotham'
   " Plug 'tomasiser/vim-code-dark'
   " Plug 'altercation/vim-colors-solarized'
   " Plug 'joshdick/onedark.vim'
   " Plug 'tomasr/molokai'
-  " Plug 'whatyouhide/vim-gotham'
   " Plug 'chriskempson/base16-vim'
   " Plug 'morhetz/gruvbox'
-  " Plug 'mhinz/vim-janah'
+  Plug 'mhinz/vim-janah'
   " Plug 'jpo/vim-railscasts-theme'
   " Plug 'kabbamine/yowish.vim'
   " Plug 'gosukiwi/vim-atom-dark'
   " Plug 'nanotech/jellybeans.vim'
   " Plug 'arcticicestudio/nord-vim'
-  " Plug 'hzchirs/vim-material'
+  Plug 'hzchirs/vim-material'
   " Plug 'jaredgorski/SpaceCamp'
-  " Plug 'sonph/onehalf', { 'rtp': 'vim' }
+  Plug 'sonph/onehalf', { 'rtp': 'vim' }
   " Plug 'dracula/vim', { 'as': 'dracula' }
   " Plug 'ayu-theme/ayu-vim'
   " Plug 'ciaranm/inkpot'
-  " Plug 'connorholyday/vim-snazzy'
+  Plug 'connorholyday/vim-snazzy'
   " END COLOR THEMES ######################################
 
   "# LANGUAGE SUPPORT =========================================
@@ -218,6 +231,7 @@ call plug#begin(s:bundle_dir)
   Plug 'plasticboy/vim-markdown'
   Plug 'elzr/vim-json'
   Plug 'vim-python/python-syntax'
+  Plug 'digitaltoad/vim-pug'
 
   " Entorno de Javascript
   " ref: https://thoughtbot.com/blog/modern-typescript-and-react-development-in-vim
@@ -245,7 +259,7 @@ autocmd BufLeave *.{js,jsx,ts,tsx} :syntax sync clear
 
 " Theme And Compatibility config
 set termguicolors     " enable true colors support
-colorscheme one
+colorscheme onehalfdark
 set background=dark
 " Resolve problems with mingw shell and emulated shells
 if !has('gui_running')
@@ -293,7 +307,7 @@ let g:user_emmet_leader_key=','
 " CtrlPConfig
 let g:ctrlp_show_hidden = 1
 let g:ctrlp_custom_ignore = {
-  \ 'dir': '\v[\/](vendor|node_modules|.git)$',
+  \ 'dir': '\v[\/](vendor|node_modules|dist|.git)$',
   \ 'file': '\v\.(swp)$'
   \ }
 

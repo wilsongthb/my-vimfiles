@@ -119,21 +119,21 @@ function! InsertCurrentDateTime()
 endfunction
 
 " Keymaps
-nmap <F1> :bp<CR>
-nmap <F2> :bn<CR>
-nmap <F3> :Bclose<CR>
+" nmap <F1> :bp<CR>
+" nmap <F2> :bn<CR>
+" nmap <F3> :Bclose<CR>
 " nmap <F4> :NERDTreeToggle<CR>
 " nmap <F4> :edit .<CR>
-nmap <F4> :Explore<CR>
+" nmap <F4> :Explore<CR>
 nmap <F5> :call CustomFormatCode()<CR>
 " nmap <F6> :NERDTreeFind<CR>
 " nmap <F6> :Explore<CR>
-nmap <F7> :vsplit<CR>
-nmap <F8> :split<CR>
-nmap <F9> :close<CR>
-nmap <F10> :w!<CR>
+" nmap <F7> :vsplit<CR>
+" nmap <F8> :split<CR>
+" nmap <F9> :close<CR>
+" nmap <F10> :w!<CR>
 "<F11> FullScreenToggle
-nnoremap <F12> "=strftime("%Y-%m-%d %H:%M")<CR>p
+" nnoremap <F12> "=strftime("%Y-%m-%d %H:%M")<CR>p
 nmap <C-\> :call GoToVSplitView()<CR>
 nmap <silent> <A-left> :BufSurfBack<CR>
 nmap <silent> <A-right> :BufSurfForward<CR>

@@ -11,12 +11,22 @@ Require wget
 
 ## SSH
 ```bash
+# vim
 git clone git@github.com:wilsongthb/my-vimfiles.git ~/.vim
+
+# neovim
+git clone git@github.com:wilsongthb/my-vimfiles.git ~/.config/nvim
+cp ~/.config/nvim/vimrc ~/.config/nvim/init.vim
 ```
 
 ## HTTPS
 ```bash
+# vim
 git clone https://github.com/wilsongthb/my-vimfiles.git ~/.vim
+
+# neovim
+git clone https://github.com/wilsongthb/my-vimfiles.git ~/.config/nvim
+cp ~/.config/nvim/vimrc ~/.config/nvim/init.vim
 ```
 
 ### After COPY COC SNIPPETS

@@ -1,5 +1,6 @@
 {
   "javascript.validate.enable": false,
   "python.linting.enabled": false,
-  "python.analysis.diagnosticEnabled": false
+  "python.analysis.diagnosticEnabled": false,
+  "typescript.format.insertSpaceAfterFunctionKeywordForAnonymousFunctions": false
 }

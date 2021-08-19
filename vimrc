@@ -115,7 +115,7 @@ function! GoToVSplitView()
 endfunction
 
 function! InsertCurrentDateTime()
-  execute 'r !printf $(date +\%Y\%m\%d_\%H\%M)'
+  execute 'r !printf $(date +\%Y-\%m-\%d_\%H:\%M)'
 endfunction
 
 " Keymaps
@@ -138,21 +138,21 @@ nmap <C-\> :call GoToVSplitView()<CR>
 nmap <silent> <A-left> :BufSurfBack<CR>
 nmap <silent> <A-right> :BufSurfForward<CR>
 
-augroup netrw_mapping
-    autocmd!
-    autocmd filetype netrw call NetrwMapping()
-augroup END
+" " Removida funcion de f1 en el explorador de vim
+" augroup netrw_mapping
+"     autocmd!
+"     autocmd filetype netrw call NetrwMapping()
+" augroup END
 
-function! NetrwMapping()
-    noremap <buffer> <F1> :bp<CR>
-endfunction
+" function! NetrwMapping()
+"     noremap <buffer> <F1> :bp<CR>
+" endfunction
 
 " Comandos
 command CopyToClipboard call CopyToClipboard()
 command! CloseAllInBuffer execute '%bdelete|edit #|normal `"'
 command! ExecuteCurrentLineInBash execute '.w !bash'
 command PutDateTime execute 'r !printf $(date "+\%Y-\%m-\%d_\%H:\%M")'
-
 
 " InteracionConClipboard
 " noremap <Leader>y "*y
@@ -200,7 +200,7 @@ call plug#begin(s:bundle_dir)
 
   " COLOR THEMES ########################################
   " Plug 'NLKNguyen/papercolor-theme'
-  " Plug 'rakr/vim-one'
+  Plug 'rakr/vim-one'
   " Plug 'whatyouhide/vim-gotham'
   " Plug 'tomasiser/vim-code-dark'
   " Plug 'altercation/vim-colors-solarized'
@@ -259,7 +259,7 @@ autocmd BufLeave *.{js,jsx,ts,tsx} :syntax sync clear
 
 " Theme And Compatibility config
 set termguicolors     " enable true colors support
-colorscheme onehalfdark
+colorscheme one
 set background=dark
 " Resolve problems with mingw shell and emulated shells
 if !has('gui_running')

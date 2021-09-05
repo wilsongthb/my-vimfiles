@@ -278,8 +278,10 @@ let g:auto_save_in_insert_mode = 0  " do not save while writing in insert mode
 let g:auto_save_no_updatetime = 1
 
 " Session
-let g:session_autosave='yes'
-let g:session_autoload='yes'
+if !has('nvim')
+  let g:session_autosave='yes'
+  let g:session_autoload='yes'
+endif
 let g:session_directory='./'
 let g:session_default_name='.session'
 let g:session_default_overwrite='yes'
@@ -320,7 +322,9 @@ endif
 " ==========================================================
 " COC CONFIG
 " ==========================================================
-source ~/.vim/coc_config.vim
+if !has('nvim')
+  source ~/.vim/coc_config.vim
+endif
 
 " EXTENCIONS
 "let g:coc_global_extensions = [

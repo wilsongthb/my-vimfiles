@@ -281,6 +281,9 @@ let g:auto_save_no_updatetime = 1
 if !has('nvim')
   let g:session_autosave='yes'
   let g:session_autoload='yes'
+else
+  let g:session_autosave='no'
+  let g:session_autoload='no'
 endif
 let g:session_directory='./'
 let g:session_default_name='.session'

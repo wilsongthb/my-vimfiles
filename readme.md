@@ -20,8 +20,14 @@ git clone https://github.com/wilsongthb/my-vimfiles.git ~/.vim
 ```
 
 # Para nvim
-```
+```sh
+mkdir -p ~/.config/nvim
 cp ~/.vim/init.vim ~/.config/nvim/init.vim
+```
+
+# Para Vim en windows
+```powershell
+cp ~/.vim/init.vim ~/_vimrc
 ```
 
 ### After COPY COC SNIPPETS

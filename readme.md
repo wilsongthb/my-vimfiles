@@ -23,6 +23,8 @@ git clone https://github.com/wilsongthb/my-vimfiles.git ~/.vim
 ```sh
 mkdir -p ~/.config/nvim
 cp ~/.vim/init.vim ~/.config/nvim/init.vim
+
+sudo apt install -y python3-neovim
 ```
 
 # Para Vim en windows

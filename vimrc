@@ -349,3 +349,9 @@ if filereadable(expand('~/.vim/coc_list.vim'))
   source ~/.vim/coc_list.vim
 endif
 
+" =========================
+" NVIM
+" =========================
+if has('nvim')
+  set pyxversion=3
+endif

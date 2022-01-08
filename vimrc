@@ -310,6 +310,7 @@ let g:user_emmet_leader_key=','
 "set wildignore+=*/vendor/*,*/node_modules/*
 
 " CtrlPConfig
+let g:ctrlp_by_filename = 1
 let g:ctrlp_show_hidden = 1
 let g:ctrlp_custom_ignore = {
   \ 'dir': '\v[\/](vendor|node_modules|dist|.git)$',

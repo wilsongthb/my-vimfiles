@@ -1,0 +1,44 @@
+<!-- Author: Wilson Pilco Nunez -->
+<!-- Email: wilsonaux1@gmail.com -->
+<!-- Created at: [:VIM_EVAL:]strftime('%Y-%m-%d %H:%M')[:END_EVAL:] -->
+<!-- Description: -->
+<template>
+  [:VIM_EVAL:]IfIsVueForm('<form @submit.prevent="save()"><app-button-submit :loading="sending"></app-button-submit></form>', '<div></div>')[:END_EVAL:]
+</template>
+<script>
+[:VIM_EVAL:]IfIsVueForm('const rules = {}', '')[:END_EVAL:]
+export default {
+  components: {
+    //
+  },
+
+  // directives
+  // filters
+
+  props: {
+    [:VIM_EVAL:]IfIsVueForm('disabled: { default: false },', '//')[:END_EVAL:]
+  },
+
+  data: () => ({
+    [:VIM_EVAL:]IfIsVueForm('sending: false,', '//')[:END_EVAL:]
+  }),
+
+  computed: {
+    [:VIM_EVAL:]IfIsVueForm('errors() { return false; }', '//')[:END_EVAL:]
+  },
+
+  // watch: {},
+
+  mounted() {
+    //
+  },
+
+  methods: {
+    [:VIM_EVAL:]IfIsVueForm('save() { this.sending = true;this.$emit("submitted") },', '//')[:END_EVAL:]
+    [:VIM_EVAL:]IfIsVueForm('reset() { this.sending =false; },', '//')[:END_EVAL:]
+    [:VIM_EVAL:]IfIsVueForm('setValue() {},', '//')[:END_EVAL:]
+  }
+};
+</script>
+
+<style scoped></style>

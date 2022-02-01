@@ -74,22 +74,16 @@ let g:netrw_list_hide= '\(^\|\s\s\)\zs\.\S\+.swp'
 "   autocmd VimEnter * :Vexplore
 " augroup END
 
-" Skeleton files
-autocmd BufNewFile  *.sh 0r ~/.vim/skeletons/sh-skeleton.sh
-autocmd BufNewFile  *.php 0r ~/.vim/skeletons/php-skeleton.php
-autocmd BufNewFile  *.vue 0r ~/.vim/skeletons/vue-skeleton.vue
-" autocmd BufNewFile  *Form.vue 0r ~/.vim/skeletons/vue-form-skeleton.vue
-
-" VUE DEFAULT ENV
-autocmd BufNewFile  .prettierrc.json 0r ~/.vim/skeletons/.prettierrc.json
-autocmd BufNewFile  jsconfig.json 0r ~/.vim/skeletons/jsconfig.json
-autocmd BufNewFile  vue.config.js 0r ~/.vim/skeletons/vue.config.js
-
-" INSERT DATETIME CREATED
-" Source: https://vim.fandom.com/wiki/Use_eval_to_create_dynamic_templates
-autocmd BufNewFile * %substitute#\[:VIM_EVAL:\]\(.\{-\}\)\[:END_EVAL:\]#\=eval(submatch(1))#ge
 
 " MisFunciones
+function! IfIsVueForm(text, alternative)
+  "return match(a:fileName, "Form.vue")
+  if match(expand('%'), "Form.vue") != -1
+    return a:text
+  endif
+  return a:alternative
+endfunction
+
 function! CustomFormatCode()
   let file_type = expand('%:e')
   if file_type == 'vue'
@@ -108,6 +102,12 @@ function! CopyToClipboard()
   echo 'copied to clipboard!'
 endfunction
 
+" function! VterminalInVsplit()
+"   execute 'terminal'
+"   let currentBuffer = buffer_number()
+"   execute 'vert sb ' . currentBuffer
+" endfunction
+
 function! GoToVSplitView()
   let currentBuffer = buffer_number()
   execute 'BufSurfBack'
@@ -117,6 +117,21 @@ endfunction
 function! InsertCurrentDateTime()
   execute 'r !printf $(date +\%Y-\%m-\%d_\%H:\%M)'
 endfunction
+
+" VUE DEFAULT ENV
+autocmd BufNewFile .prettierrc.json 0r ~/.vim/skeletons/.prettierrc.json
+autocmd BufNewFile jsconfig.json 0r ~/.vim/skeletons/jsconfig.json
+autocmd BufNewFile vue.config.js 0r ~/.vim/skeletons/vue.config.js
+
+" Skeleton files
+autocmd BufNewFile *.sh 0r ~/.vim/skeletons/skeleton.sh
+autocmd BufNewFile *.php 0r ~/.vim/skeletons/skeleton.php
+autocmd BufNewFile *.vue 0r ~/.vim/skeletons/vue-skeleton.txt
+autocmd BufNewFile *.js 0r ~/.vim/skeletons/skeleton.js
+
+" INSERT DATETIME CREATED
+" Source: https://vim.fandom.com/wiki/Use_eval_to_create_dynamic_templates
+autocmd BufNewFile * %substitute#\[:VIM_EVAL:\]\(.\{-\}\)\[:END_EVAL:\]#\=eval(submatch(1))#ge
 
 " Keymaps
 " nmap <F1> :bp<CR>
@@ -153,12 +168,15 @@ command CopyToClipboard call CopyToClipboard()
 command! CloseAllInBuffer execute '%bdelete|edit #|normal `"'
 command! ExecuteCurrentLineInBash execute '.w !bash'
 command PutDateTime execute 'r !printf $(date "+\%Y-\%m-\%d_\%H:\%M")'
-
+" command Vterminal call VterminalInVsplit()
 " InteracionConClipboard
 " noremap <Leader>y "*y
 " noremap <Leader>p "*p
 " noremap <Leader>Y "+y
 " noremap <Leader>P "+p
+
+" # MACROS
+let @r = "I$item->\<esc>lveyA = $request->input(\"\<esc>pA;\<esc>"
 
 " RuntimePath
 set runtimepath^=~/.vim/_plugins/bclose
@@ -326,28 +344,27 @@ endif
 " ==========================================================
 " COC CONFIG
 " ==========================================================
-if !has('nvim')
-  source ~/.vim/coc_config.vim
-endif
+source ~/.vim/coc-config.vim
 
 " EXTENCIONS
 "let g:coc_global_extensions = [
-"   \ 'coc-snippets',
-"   \ 'coc-eslint',
-"   \ 'coc-emmet',
-"   \ 'coc-vetur',
-"   \ 'coc-tsserver',
-"   \ 'coc-phpls',
-"   \ 'coc-json',
-"   \ 'coc-html',
-"   \ 'coc-css',
-"   \ 'coc-sh',
-"   \ 'coc-sql',
-"   \ 'coc-python',
-"   \ ]
+"  \ 'coc-snippets',
+"  \ 'coc-eslint',
+"  \ 'coc-emmet',
+"  \ 'coc-vetur',
+"  \ 'coc-tsserver',
+"  \ 'coc-phpls',
+"  \ 'coc-json',
+"  \ 'coc-html',
+"  \ 'coc-css',
+"  \ 'coc-sh',
+"  \ 'coc-sql',
+"  \ 'coc-python',
+"  \ 'coc-prettier',
+"  \ ]
 
-if filereadable(expand('~/.vim/coc_list.vim'))
-  source ~/.vim/coc_list.vim
+if filereadable(expand('~/.vim/coc-extensions.vim'))
+  source ~/.vim/coc-extensions.vim
 endif
 
 " =========================

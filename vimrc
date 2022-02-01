@@ -345,6 +345,7 @@ endif
 " COC CONFIG
 " ==========================================================
 source ~/.vim/coc-config.vim
+source ~/.vim/coc-snippets.vim
 
 " EXTENCIONS
 "let g:coc_global_extensions = [

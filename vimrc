@@ -278,7 +278,7 @@ autocmd BufLeave *.{js,jsx,ts,tsx} :syntax sync clear
 
 " Theme And Compatibility config
 set termguicolors     " enable true colors support
-colorscheme one
+colorscheme sonokai
 set background=dark
 " Resolve problems with mingw shell and emulated shells
 if !has('gui_running')
@@ -311,10 +311,9 @@ set sessionoptions-=options,curdir,folds,buffers
 
 " Airline
 let g:airline#extensions#tabline#enabled = 1
-" let sshTty = $SSH_TTY
 " Check if it'snt a ssh conection and if have powerline script to enable powerline fonts
 if strlen($SSH_TTY) == 0 && filereadable(expand('/usr/share/fonts/opentype/PowerlineSymbols.otf'))
-  let g:airline_powerline_fonts = 1
+  " let g:airline_powerline_fonts = 1
 endif
 
 " nerdcommenter config
@@ -332,7 +331,7 @@ let g:user_emmet_leader_key=','
 let g:ctrlp_by_filename = 1
 let g:ctrlp_show_hidden = 1
 let g:ctrlp_custom_ignore = {
-  \ 'dir': '\v[\/](vendor|node_modules|dist|.git)$',
+  \ 'dir': '\v[\/](vendor|node_modules|dist|venv|python-env|.git)$',
   \ 'file': '\v\.(swp)$'
   \ }
 
@@ -375,3 +374,6 @@ endif
 if has('nvim')
   set pyxversion=3
 endif
+
+" ### MACROS ######################################
+

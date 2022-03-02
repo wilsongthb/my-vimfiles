@@ -239,6 +239,7 @@ call plug#begin(s:bundle_dir)
   " Plug 'ayu-theme/ayu-vim'
   " Plug 'ciaranm/inkpot'
   Plug 'connorholyday/vim-snazzy'
+  Plug 'sainnhe/sonokai'
   " END COLOR THEMES ######################################
 
   "# LANGUAGE SUPPORT =========================================

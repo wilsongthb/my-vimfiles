@@ -43,3 +43,17 @@ wget https://github.com/powerline/powerline/raw/develop/font/PowerlineSymbols.ot
 mv PowerlineSymbols.otf ~/.local/share/fonts/
 fc-cache -vf ~/.local/share/fonts/
 ```
+
+
+# PARA DOCKER
+```
+docker build -t nvim:image .
+
+# linux
+docker run -it -v ~/dev:/code --name nvim nvim:image
+
+# windows
+docker run -it -v C:\dev:/code --name nvim nvim:image
+docker start nvim
+docker exec -it nvim
+```

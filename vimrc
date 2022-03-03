@@ -226,19 +226,19 @@ call plug#begin(s:bundle_dir)
   " Plug 'tomasr/molokai'
   " Plug 'chriskempson/base16-vim'
   " Plug 'morhetz/gruvbox'
-  Plug 'mhinz/vim-janah'
+  " Plug 'mhinz/vim-janah'
   " Plug 'jpo/vim-railscasts-theme'
   " Plug 'kabbamine/yowish.vim'
   " Plug 'gosukiwi/vim-atom-dark'
   " Plug 'nanotech/jellybeans.vim'
   " Plug 'arcticicestudio/nord-vim'
-  Plug 'hzchirs/vim-material'
+  " Plug 'hzchirs/vim-material'
   " Plug 'jaredgorski/SpaceCamp'
   Plug 'sonph/onehalf', { 'rtp': 'vim' }
   " Plug 'dracula/vim', { 'as': 'dracula' }
   " Plug 'ayu-theme/ayu-vim'
   " Plug 'ciaranm/inkpot'
-  Plug 'connorholyday/vim-snazzy'
+  " Plug 'connorholyday/vim-snazzy'
   Plug 'sainnhe/sonokai'
   " END COLOR THEMES ######################################
 

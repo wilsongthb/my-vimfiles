@@ -224,7 +224,7 @@ call plug#begin(s:bundle_dir)
   " Plug 'altercation/vim-colors-solarized'
   " Plug 'joshdick/onedark.vim'
   " Plug 'tomasr/molokai'
-  " Plug 'chriskempson/base16-vim'
+  Plug 'chriskempson/base16-vim'
   " Plug 'morhetz/gruvbox'
   " Plug 'mhinz/vim-janah'
   " Plug 'jpo/vim-railscasts-theme'
@@ -262,7 +262,8 @@ call plug#begin(s:bundle_dir)
   " Plug 'jparise/vim-graphql'
 
   "# END LANGUAGE SUPPORT =====================================
-
+  
+  Plug 'junegunn/goyo.vim'
   
 call plug#end()
 
@@ -278,7 +279,7 @@ autocmd BufLeave *.{js,jsx,ts,tsx} :syntax sync clear
 
 " Theme And Compatibility config
 set termguicolors     " enable true colors support
-colorscheme sonokai
+colorscheme one
 set background=dark
 " Resolve problems with mingw shell and emulated shells
 if !has('gui_running')

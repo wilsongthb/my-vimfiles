@@ -6,8 +6,9 @@
   [:VIM_EVAL:]IfIsVueForm('<form @submit.prevent="save()"><app-button-submit :loading="sending"></app-button-submit></form>', '<div></div>')[:END_EVAL:]
 </template>
 <script>
-[:VIM_EVAL:]IfIsVueForm('const rules = {}', '')[:END_EVAL:]
+[:VIM_EVAL:]IfIsVueForm('const rules = {}', '/* Script part */')[:END_EVAL:]
 export default {
+  name: "[:VIM_EVAL:]split(expand("%:r"),"/")[-1][:END_EVAL:]",
   components: {
     //
   },
@@ -40,5 +41,4 @@ export default {
   }
 };
 </script>
-
 <style scoped></style>

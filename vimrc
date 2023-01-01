@@ -335,6 +335,7 @@ let g:ctrlp_custom_ignore = {
   \ 'dir': '\v[\/](vendor|node_modules|dist|venv|python-env|.git|.venv)$',
   \ 'file': '\v\.(swp)$'
   \ }
+let g:ctrlp_working_path_mode = 'c'
 
 " Do we have local vimrc?
 if filereadable('.vimrc.local')

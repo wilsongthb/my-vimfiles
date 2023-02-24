@@ -87,3 +87,25 @@ static async delete$1(id) {
   return (await http.delete(\`api/$2/\${id}/\`)).data;
 }
 endsnippet
+
+snippet  mkors "Make only resources" b
+static async getList(params) {
+  return (await http.get("api/$1", { params })).data;
+}
+
+static async get(id) {
+  return (await http.get(\`api/$1/\${id}\`)).data;
+}
+
+static async save(reg) {
+  if (reg.id === undefined || reg.id === null) {
+    return (await http.post("api/$1", reg)).data;
+  } else {
+    return (await http.put(\`api/$1/\${reg.id}\`, reg)).data;
+  }
+}
+
+static async delete(id) {
+  return (await http.delete(\`api/$1/\${id}\`)).data;
+}
+endsnippet

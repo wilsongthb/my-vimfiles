@@ -86,15 +86,16 @@ endfunction
 
 function! CustomFormatCode()
   let file_type = expand('%:e')
-  if file_type == 'vue'
-    execute "Prettier"
-  elseif file_type == 'js'
-    execute "Prettier"
-  " elseif file_type == 'html'
+  execute "Format"
+  " if file_type == 'vue'
   "   execute "Prettier"
-  else
-    execute "Format"
-  endif
+  " elseif file_type == 'js'
+  "   execute "Prettier"
+  "  elseif file_type == 'html'
+  "    execute "Prettier"
+  " else
+  "   execute "Format"
+  " endif
 endfunction
 
 function! CopyToClipboard()

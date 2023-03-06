@@ -219,14 +219,15 @@ call plug#begin(s:bundle_dir)
   " Plug 'airblade/vim-gitgutter'
 
   " COLOR THEMES ########################################
-  " Plug 'NLKNguyen/papercolor-theme'
+  Plug 'NLKNguyen/papercolor-theme'
   Plug 'rakr/vim-one'
   " Plug 'whatyouhide/vim-gotham'
   " Plug 'tomasiser/vim-code-dark'
   " Plug 'altercation/vim-colors-solarized'
   " Plug 'joshdick/onedark.vim'
-  " Plug 'tomasr/molokai'
-  Plug 'chriskempson/base16-vim'
+  Plug 'tomasr/molokai'
+  Plug 'sickill/vim-monokai'
+  " Plug 'chriskempson/base16-vim'
   " Plug 'morhetz/gruvbox'
   " Plug 'mhinz/vim-janah'
   " Plug 'jpo/vim-railscasts-theme'
@@ -234,10 +235,10 @@ call plug#begin(s:bundle_dir)
   " Plug 'gosukiwi/vim-atom-dark'
   " Plug 'nanotech/jellybeans.vim'
   " Plug 'arcticicestudio/nord-vim'
-  " Plug 'hzchirs/vim-material'
+  Plug 'hzchirs/vim-material'
   " Plug 'jaredgorski/SpaceCamp'
   Plug 'sonph/onehalf', { 'rtp': 'vim' }
-  " Plug 'dracula/vim', { 'as': 'dracula' }
+  Plug 'dracula/vim', { 'as': 'dracula' }
   " Plug 'ayu-theme/ayu-vim'
   " Plug 'ciaranm/inkpot'
   " Plug 'connorholyday/vim-snazzy'

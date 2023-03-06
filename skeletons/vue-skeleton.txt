@@ -1,11 +1,13 @@
-<!-- Author: Wilson Pilco Nunez -->
-<!-- Email: wilsonaux1@gmail.com -->
-<!-- Created at: [:VIM_EVAL:]strftime('%Y-%m-%d %H:%M')[:END_EVAL:] -->
-<!-- Description: -->
 <template>
-  [:VIM_EVAL:]IfIsVueForm('<form @submit.prevent="save()"><app-button-submit :loading="sending"></app-button-submit></form>', '<div></div>')[:END_EVAL:]
+  <div></div>
 </template>
 <script>
+/**
+ * Author: Wilson Pilco Nunez
+ * Email: wilsonaux1@gmail.com
+ * Created at: [:VIM_EVAL:]strftime('%Y-%m-%d %H:%M')[:END_EVAL:]
+ * Description: 
+ */
 [:VIM_EVAL:]IfIsVueForm('const rules = {}', '/* Script part */')[:END_EVAL:]
 export default {
   name: "[:VIM_EVAL:]split(expand("%:r"),"/")[-1][:END_EVAL:]",

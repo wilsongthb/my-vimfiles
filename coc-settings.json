@@ -4,5 +4,6 @@
   "python.analysis.diagnosticEnabled": false,
   "typescript.format.insertSpaceAfterFunctionKeywordForAnonymousFunctions": false,
   "javascript.preferences.importModuleSpecifierEnding": "js",
-  "javascript.preferences.quoteStyle": "double"
+  "javascript.preferences.quoteStyle": "double",
+  "intelephense.environment.phpVersion": "8.2"
 }

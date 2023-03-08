@@ -11,10 +11,9 @@
 " =====================================================
 " ConfiguracionBasica - https://github.com/mhinz/vim-galore/blob/master/static/minimal-vimrc.vim
 " A (not so) minimal vimrc.
-" You want Vim, not vi. When Vim finds a vimrc, 'nocompatible' is set anyway.
-" We set it explicitely to make our position clear!
 " 2021-06-05 10:38
-set nocompatible
+
+set nocompatible           "You want Vim, not vi. When Vim finds a vimrc, 'nocompatible' is set anyway. We set it explicitely to make our position clear!
 
 filetype plugin indent on  " Load plugins according to detected filetype.
 syntax on                  " Enable syntax highlighting.
@@ -176,9 +175,6 @@ command PutDateTime execute 'r !printf $(date "+\%Y-\%m-\%d_\%H:\%M")'
 " noremap <Leader>Y "+y
 " noremap <Leader>P "+p
 
-" # MACROS
-let @r = "I$item->\<esc>lveyA = $request->input(\"\<esc>pA;\<esc>"
-
 " RuntimePath
 set runtimepath^=~/.vim/_plugins/bclose
 "set runtimepath^=~/.vim/_plugins/vim-autocomplpop
@@ -192,7 +188,7 @@ set runtimepath^=~/.vim/_plugins/bclose
 "   autocmd VimEnter * PlugInstall | source $MYVIMRC
 " endif
 
-" PlugConfig
+" ###### PlugConfig ##############
 let s:is_win = has('win32')
 let $v = $HOME.(s:is_win ? '\vimfiles' : '/.vim')
 let s:bundle_dir = $v.'/bundle'
@@ -239,7 +235,7 @@ call plug#begin(s:bundle_dir)
   " Plug 'jaredgorski/SpaceCamp'
   Plug 'sonph/onehalf', { 'rtp': 'vim' }
   Plug 'dracula/vim', { 'as': 'dracula' }
-  " Plug 'ayu-theme/ayu-vim'
+  Plug 'ayu-theme/ayu-vim'
   " Plug 'ciaranm/inkpot'
   " Plug 'connorholyday/vim-snazzy'
   Plug 'sainnhe/sonokai'
@@ -267,7 +263,6 @@ call plug#begin(s:bundle_dir)
   "# END LANGUAGE SUPPORT =====================================
   
   Plug 'junegunn/goyo.vim'
-  
 call plug#end()
 
 " Install if bundle not exists
@@ -358,28 +353,10 @@ let g:VM_maps["Redo"] = '<C-r>'
 " COC CONFIG
 " ==========================================================
 source ~/.vim/coc-config.vim
-source ~/.vim/coc-snippets.vim
-
-" EXTENCIONS
-"let g:coc_global_extensions = [
-"  \ 'coc-snippets',
-"  \ 'coc-eslint',
-"  \ 'coc-emmet',
-"  \ 'coc-vetur',
-"  \ 'coc-tsserver',
-"  \ 'coc-phpls',
-"  \ 'coc-json',
-"  \ 'coc-html',
-"  \ 'coc-css',
-"  \ 'coc-sh',
-"  \ 'coc-sql',
-"  \ 'coc-python',
-"  \ 'coc-prettier',
-"  \ ]
-
 if filereadable(expand('~/.vim/coc-extensions.vim'))
   source ~/.vim/coc-extensions.vim
 endif
+source ~/.vim/coc-snippets.vim
 
 " =========================
 " NVIM
@@ -389,4 +366,4 @@ if has('nvim')
 endif
 
 " ### MACROS ######################################
-
+let @r = "I$item->\<esc>lveyA = $request->input(\"\<esc>pA;\<esc>"

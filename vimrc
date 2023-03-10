@@ -219,7 +219,7 @@ call plug#begin(s:bundle_dir)
   Plug 'rakr/vim-one'
   " Plug 'whatyouhide/vim-gotham'
   " Plug 'tomasiser/vim-code-dark'
-  " Plug 'altercation/vim-colors-solarized'
+  Plug 'altercation/vim-colors-solarized'
   " Plug 'joshdick/onedark.vim'
   Plug 'tomasr/molokai'
   Plug 'sickill/vim-monokai'
@@ -277,8 +277,8 @@ autocmd BufLeave *.{js,jsx,ts,tsx} :syntax sync clear
 
 " Theme And Compatibility config
 set termguicolors     " enable true colors support
-colorscheme one
 set background=dark
+colorscheme sonokai
 " Resolve problems with mingw shell and emulated shells
 if !has('gui_running')
   set t_Co=256

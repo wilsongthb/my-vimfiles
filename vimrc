@@ -199,7 +199,7 @@ call plug#begin(s:bundle_dir)
   " Plug 'preservim/nerdtree'
   Plug 'vim-airline/vim-airline'
   Plug 'vim-airline/vim-airline-themes'
-  " Plug 'terryma/vim-multiple-cursors'
+  " Plug 'terryma/vim-multiple-cursors' "Deprecated
   Plug 'mg979/vim-visual-multi'
   Plug 'mattn/emmet-vim'
   Plug 'Shougo/unite.vim'
@@ -217,17 +217,17 @@ call plug#begin(s:bundle_dir)
   " COLOR THEMES ########################################
   Plug 'NLKNguyen/papercolor-theme'
   Plug 'rakr/vim-one'
-  " Plug 'whatyouhide/vim-gotham'
-  " Plug 'tomasiser/vim-code-dark'
-  Plug 'altercation/vim-colors-solarized'
+  Plug 'whatyouhide/vim-gotham'
+  Plug 'tomasiser/vim-code-dark'
+  Plug 'ericbn/vim-solarized'
   " Plug 'joshdick/onedark.vim'
   Plug 'tomasr/molokai'
   Plug 'sickill/vim-monokai'
   " Plug 'chriskempson/base16-vim'
-  " Plug 'morhetz/gruvbox'
-  " Plug 'mhinz/vim-janah'
+  Plug 'morhetz/gruvbox'
+  Plug 'mhinz/vim-janah'
   " Plug 'jpo/vim-railscasts-theme'
-  " Plug 'kabbamine/yowish.vim'
+  Plug 'kabbamine/yowish.vim'
   " Plug 'gosukiwi/vim-atom-dark'
   " Plug 'nanotech/jellybeans.vim'
   " Plug 'arcticicestudio/nord-vim'
@@ -239,6 +239,11 @@ call plug#begin(s:bundle_dir)
   " Plug 'ciaranm/inkpot'
   " Plug 'connorholyday/vim-snazzy'
   Plug 'sainnhe/sonokai'
+  Plug 'nordtheme/vim'
+  Plug 'notpratheek/vim-luna'
+  Plug 'sheerun/vim-wombat-scheme'
+  Plug 'baskerville/bubblegum'
+  Plug 'dunstontc/vim-vscode-theme'
   " END COLOR THEMES ######################################
 
   "# LANGUAGE SUPPORT =========================================
@@ -275,10 +280,15 @@ endif
 autocmd BufEnter *.{js,jsx,ts,tsx} :syntax sync fromstart
 autocmd BufLeave *.{js,jsx,ts,tsx} :syntax sync clear
 
-" Theme And Compatibility config
+" Theme And Compatibility config ==================================
+
+"base16 theme
+" let base16colorspace=256  " Access colors present in 256 colorspace
+
 set termguicolors     " enable true colors support
 set background=dark
-colorscheme sonokai
+colorscheme solarized
+" let g:airline_theme='material'
 " Resolve problems with mingw shell and emulated shells
 if !has('gui_running')
   set t_Co=256
@@ -299,12 +309,13 @@ let g:auto_save_no_updatetime = 1
 if !has('nvim')
   let g:session_autosave='yes'
   let g:session_autoload='yes'
+  let g:session_default_name='.session'
 else
+  let g:session_default_name='.nsession'
   let g:session_autosave='no'
   let g:session_autoload='no'
 endif
 let g:session_directory='./'
-let g:session_default_name='.session'
 let g:session_default_overwrite='yes'
 set sessionoptions-=options,curdir,folds,buffers
 

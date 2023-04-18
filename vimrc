@@ -287,7 +287,7 @@ autocmd BufLeave *.{js,jsx,ts,tsx} :syntax sync clear
 
 set termguicolors     " enable true colors support
 set background=dark
-colorscheme solarized
+colorscheme codedark
 " let g:airline_theme='material'
 " Resolve problems with mingw shell and emulated shells
 if !has('gui_running')
@@ -311,7 +311,7 @@ if !has('nvim')
   let g:session_autoload='yes'
   let g:session_default_name='.session'
 else
-  let g:session_default_name='.nsession'
+  let g:session_default_name='.session'
   let g:session_autosave='no'
   let g:session_autoload='no'
 endif

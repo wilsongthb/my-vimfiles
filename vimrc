@@ -141,6 +141,7 @@ autocmd BufNewFile * %substitute#\[:VIM_EVAL:\]\(.\{-\}\)\[:END_EVAL:\]#\=eval(s
 " nmap <F4> :edit .<CR>
 " nmap <F4> :Explore<CR>
 nmap <F5> :call CustomFormatCode()<CR>
+nnoremap <F6> :let &bg=(&bg=='light'?'dark':'light')<cr>
 " nmap <F6> :NERDTreeFind<CR>
 " nmap <F6> :Explore<CR>
 " nmap <F7> :vsplit<CR>
@@ -287,7 +288,7 @@ autocmd BufLeave *.{js,jsx,ts,tsx} :syntax sync clear
 
 set termguicolors     " enable true colors support
 set background=dark
-colorscheme codedark
+colorscheme Papercolor
 " let g:airline_theme='material'
 " Resolve problems with mingw shell and emulated shells
 if !has('gui_running')
@@ -308,11 +309,11 @@ let g:auto_save_no_updatetime = 1
 " Session
 if !has('nvim')
   let g:session_autosave='yes'
-  let g:session_autoload='yes'
+  let g:session_autoload='no'
   let g:session_default_name='.session'
 else
   let g:session_default_name='.session'
-  let g:session_autosave='no'
+  let g:session_autosave='yes'
   let g:session_autoload='no'
 endif
 let g:session_directory='./'
@@ -378,3 +379,4 @@ endif
 
 " ### MACROS ######################################
 let @r = "I$item->\<esc>lveyA = $request->input(\"\<esc>pA;\<esc>"
+let @4 = "veedea.value\<esc>" " Convierte un valor de this.value a value.value para vue 2 -> vue 3

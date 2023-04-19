@@ -288,7 +288,7 @@ autocmd BufLeave *.{js,jsx,ts,tsx} :syntax sync clear
 
 set termguicolors     " enable true colors support
 set background=dark
-colorscheme Papercolor
+colorscheme PaperColor
 " let g:airline_theme='material'
 " Resolve problems with mingw shell and emulated shells
 if !has('gui_running')

@@ -1,0 +1,42 @@
+<template>
+  <div></div>
+</template>
+<script>
+export default {
+  name: "[:VIM_EVAL:]split(expand("%:r"),"/")[-1][:END_EVAL:]",
+  inheritAttrs: true,
+};
+</script>
+<script setup>
+/** Author: Wilson Pilco Nunez**/
+/** Email: wilsonaux1@gmail.com**/
+/** Created at: [:VIM_EVAL:]strftime('%Y-%m-%d %H:%M')[:END_EVAL:]**/
+/** Description: **/
+import { onMounted, onCreated, reactive, ref } from "vue";
+
+// directives
+
+const props = defineProps({
+  //
+});
+
+const emits = defineEmits([]);
+
+const data = reactive({});
+
+// computed
+
+// watch
+
+// mounted
+onMounted(() => {
+  //
+});
+
+// methods
+
+defineExpose({
+  //
+});
+</script>
+<style scoped></style>

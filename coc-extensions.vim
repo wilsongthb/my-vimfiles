@@ -10,9 +10,9 @@ let g:coc_global_extensions = [
   \ 'coc-sh',
   \ 'coc-sql',
   \ 'coc-python',
+  \ '@yaegassy/coc-volar',
   \ ]
 
 
   " \ 'coc-prettier',
   " \ 'coc-vetur',
-  " \ '@yaegassy/coc-volar',

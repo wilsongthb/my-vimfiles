@@ -1,11 +1,10 @@
-<!-- Author: Wilson Pilco Nunez -->
-<!-- Email: wilsonaux1@gmail.com -->
-<!-- Created at: [:VIM_EVAL:]strftime('%Y-%m-%d %H:%M')[:END_EVAL:] -->
-<!-- Description:  -->
-<template>
-  <div></div>
-</template>
 <script>
+/**
+ * Author: Wilson Pilco Nunez
+ * Email: wilsonaux1@gmail.com
+ * Created at: [:VIM_EVAL:]strftime('%Y-%m-%d %H:%M')[:END_EVAL:]
+ * Description:
+ */
 export default {
   name: "[:VIM_EVAL:]split(expand("%:r"),"/")[-1][:END_EVAL:]",
   inheritAttrs: true,
@@ -39,4 +38,7 @@ defineExpose({
   //
 });
 </script>
+<template>
+  <div></div>
+</template>
 <style scoped></style>

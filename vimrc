@@ -126,8 +126,8 @@ autocmd BufNewFile vue.config.js 0r ~/.vim/skeletons/vue.config.js
 " Skeleton files
 autocmd BufNewFile *.sh 0r ~/.vim/skeletons/skeleton.sh
 autocmd BufNewFile *.php 0r ~/.vim/skeletons/skeleton.php
-autocmd BufNewFile *.vue 0r ~/.vim/skeletons/vue-skeleton.txt
-autocmd BufNewFile *.vue3 0r ~/.vim/skeletons/vue-skeleton.vue3
+autocmd BufNewFile *.vue2 0r ~/.vim/skeletons/vue-skeleton.txt
+autocmd BufNewFile *.vue 0r ~/.vim/skeletons/vue-skeleton.vue3
 autocmd BufNewFile *.js 0r ~/.vim/skeletons/skeleton.js
 
 " INSERT DATETIME CREATED

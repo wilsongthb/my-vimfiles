@@ -6,5 +6,6 @@
   "javascript.preferences.importModuleSpecifierEnding": "js",
   "javascript.preferences.quoteStyle": "double",
   "intelephense.environment.phpVersion": "8.2",
-  "vue.inlayHints.optionsWrapper": false
+  "vue.inlayHints.optionsWrapper": false,
+  "snippets.ultisnips.pythonPrompt": false
 }

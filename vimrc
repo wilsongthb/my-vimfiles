@@ -59,6 +59,7 @@ endif
 set nowrap               " Not cut lines
 set wildmenu             " Show suggest in cmd
 set nofoldenable      "" disable folding
+set noswapfile
 
 " NetrwConfig
 " let g:netrw_use_noswf= 1
@@ -289,7 +290,7 @@ autocmd BufLeave *.{js,jsx,ts,tsx} :syntax sync clear
 
 set termguicolors     " enable true colors support
 set background=dark
-colorscheme PaperColor
+colorscheme gruvbox
 " let g:airline_theme='material'
 " Resolve problems with mingw shell and emulated shells
 if !has('gui_running')
